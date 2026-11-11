@@ -23,6 +23,12 @@
     "judge_model": "openai/gpt-4o-mini",
     "max_steps": 8,
     "dataset": "core",
-    "workers": 2
-  }
+    "workers": 3
+  },
+  "execution_environment": "macOS ARM, Python 3.10.21; full evaluations run locally after user requested the switch from VPS.",
+  "after_agent_sha256": "a7894904eedf98541fb3931ab080d9bd2dc29fc003f1c69bc22b04b9c23da903",
+  "primary_case": "H7",
+  "hypothesis": "Requiring evidence-backed per-provider conclusions prevents treating a failed status lookup as operational, even when requested by the user.",
+  "additional_required_change": "Incident URL presence gate with revision inside the existing max_steps budget.",
+  "bonus_guard": "At most three actual requests after RATE_LIMITED; honor numeric or HTTP-date Retry-After up to two seconds, otherwise stop and report missing data."
 }
