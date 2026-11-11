@@ -1,0 +1,4 @@
+Đang chạy H1
+H1: None (unscored)
+Chưa có điểm tổng do có case chưa được chấm; xem reason trong file.
+Điểm: None/100; đã chấm 0/1 case. File: evidence/iterations/check_v5_h1.json

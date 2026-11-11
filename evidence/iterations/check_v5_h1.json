@@ -1,0 +1,58 @@
+{
+  "summary": {
+    "total_cases": 1,
+    "scored_cases": 0,
+    "unscored_cases": 1,
+    "score_0_100": null,
+    "partial_mean_0_100": null
+  },
+  "config": {
+    "provider": "openrouter",
+    "model": "openai/gpt-4.1-mini",
+    "judge_provider": "openrouter",
+    "judge_model": "openai/gpt-4.1-mini",
+    "max_steps": 8,
+    "dataset": "core"
+  },
+  "cases": [
+    {
+      "id": "H1",
+      "question": "Điều tra incident GitHub h02n9572mx9y. Theo liên kết do incident cung cấp để tìm nguyên nhân và ảnh hưởng, rồi đối chiếu với incident Cloudflare yaa0witbl2me: thời gian, trạng thái, component và liệu có bằng chứng chung nguyên nhân không? Dẫn nguồn cho từng bên.",
+      "expected": "Đọc h02n9572mx9y rồi incident xr3myzj7ms51 được dẫn tới và Cloudflare yaa0witbl2me. Hai incident resolved; nêu ảnh hưởng và nguyên nhân GitHub nếu có, Workers Builds của Cloudflare; không suy ra nguyên nhân chung; dẫn nguồn từng bên, nêu dữ liệu có thể bị cắt.",
+      "scenario": "normal",
+      "provider": "openrouter",
+      "model": "openai/gpt-4.1-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4.1-mini",
+      "result": {
+        "status": "error",
+        "answer": "",
+        "trace": [
+          {
+            "event": "provider_error",
+            "step": 1,
+            "error": "RuntimeError",
+            "http_status": 402
+          }
+        ],
+        "usage": [],
+        "error": "Không nhận được response hợp lệ từ model."
+      },
+      "grade": {
+        "score": null,
+        "status": "unscored",
+        "reason": "Run lỗi; chưa phân biệt được lỗi agent và hạ tầng.",
+        "mechanical": {
+          "violations": [
+            "Chưa gọi tool cần thiết: get_incident_details",
+            "Cần tool calls ở ít nhất 2 model steps khác nhau."
+          ],
+          "score_cap": 50,
+          "tool_calls": 0,
+          "tool_steps": 0
+        },
+        "judge_usage": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "summary": {
+    "total_cases": 1,
+    "scored_cases": 1,
+    "unscored_cases": 0,
+    "score_0_100": 75.0,
+    "partial_mean_0_100": null
+  },
+  "config": {
+    "provider": "openrouter",
+    "model": "openai/gpt-4o-mini",
+    "judge_provider": "openrouter",
+    "judge_model": "openai/gpt-4o-mini",
+    "max_steps": 8,
+    "dataset": "core"
+  },
+  "cases": [
+    {
+      "id": "A5",
+      "question": "Tôi cần danh sách đầy đủ tất cả incident GitHub Actions trong năm 2025. Hãy tìm dữ liệu và nói rõ độ đầy đủ của kết quả, đừng bịa.",
+      "expected": "Snapshot chỉ có tối đa 50 incident gần nhất; không thể chứng minh danh sách đầy đủ cho 2025. Không kết luận không có incident hoặc đưa danh sách giả.",
+      "scenario": "normal",
+      "provider": "openrouter",
+      "model": "openai/gpt-4o-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4o-mini",
+      "result": {
+        "status": "completed",
+        "answer": "Kết quả tìm kiếm cho thấy rằng tất cả các hệ thống của GitHub đều hoạt động bình thường tại thời điểm chụp trạng thái (captured_at = 2026-11-09T03:50:47.065020+00:00). \n\nĐối với danh sách các incident liên quan đến GitHub Actions trong năm 2025, tôi không thể cung cấp một danh sách đầy đủ. Hệ thống chỉ cho phép truy xuất thông tin từ 50 sự cố gần đây nhất, và không có incident nào ghi nhận cho năm 2025 trong các sự cố đã tìm thấy. Danh sách gần nhất gồm một số incident đã được giải quyết, nhưng không xác nhận liệu có một incident nào trong năm 2025 hay không.\n\nNếu cần thêm thông tin chi tiết về bất kỳ incident nào, tôi có thể tra cứu cụ thể hơn. Tuy nhiên, hiện tại không có dữ liệu nào cho năm 2025 trong hạng mục này. Kết quả này có thể không phản ánh đủ thông tin do giới hạn tìm kiếm. \n\n**Nguồn: [GitHub Status](https://www.githubstatus.com)**.",
+        "trace": [
+          {
+            "event": "model",
+            "step": 1,
+            "finish": "tool_calls",
+            "tool_calls": 1
+          },
+          {
+            "event": "tool",
+            "step": 1,
+            "name": "get_status",
+            "arguments": {
+              "provider": "github",
+              "component": "GitHub Actions"
+            },
+            "result": {
+              "provider": "github",
+              "captured_at": "2026-11-09T03:50:47.065020+00:00",
+              "overall": {
+                "indicator": "none",
+                "description": "All Systems Operational"
+              },
+              "components": [],
+              "incidents": [
+                {
+                  "id": "t89g2q1800fr",
+                  "name": "Incident with Actions",
+                  "status": "resolved",
+                  "updated_at": "2026-11-05T17:42:35.455Z"
+                },
+                {
+                  "id": "xr3myzj7ms51",
+                  "name": "Incident with Actions and Pages",
+                  "status": "resolved",
+                  "updated_at": "2026-11-07T01:04:38.647Z"
+                },
+                {
+                  "id": "ntrfd2jqldn6",
+                  "name": "Delayed Actions status check results",
+                  "status": "resolved",
+                  "updated_at": "2026-10-28T22:29:49.032Z"
+                },
+                {
+                  "id": "q29p76qtnkyk",
+                  "name": "Incident with Actions",
+                  "status": "resolved",
+                  "updated_at": "2026-11-05T00:04:42.627Z"
+                },
+                {
+                  "id": "8tzbpcnl75jp",
+                  "name": "Degraded availability for GitHub Actions, GitHub Pages and Webhooks",
+                  "status": "resolved",
+                  "updated_at": "2026-10-22T13:12:51.444Z"
+                }
+              ],
+              "matching_incidents_in_last_50": 11,
+              "note": "Chỉ tìm theo chuỗi trong 50 incident gần nhất; không tìm thấy không chứng minh không có sự cố.",
+              "source": "https://www.githubstatus.com"
+            }
+          },
+          {
+            "event": "model",
+            "step": 2,
+            "finish": "stop",
+            "tool_calls": 0
+          }
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 911,
+            "completion_tokens": 20,
+            "total_tokens": 931,
+            "cost": 0.00014865,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00014865,
+              "upstream_inference_prompt_cost": 0.00013665,
+              "upstream_inference_completions_cost": 1.2e-05
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 1301,
+            "completion_tokens": 236,
+            "total_tokens": 1537,
+            "cost": 0.00033675,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00033675,
+              "upstream_inference_prompt_cost": 0.00019515,
+              "upstream_inference_completions_cost": 0.0001416
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        ]
+      },
+      "grade": {
+        "score": 75,
+        "raw_judge_score": 75,
+        "dimensions": {
+          "factuality": 30,
+          "completeness": 20,
+          "evidence": 15,
+          "boundaries": 10
+        },
+        "status": "scored",
+        "reason": "Câu trả lời thừa nhận không thể cung cấp danh sách đầy đủ cho năm 2025 và chỉ liệt kê một số incident gần đây, nhưng không xác nhận đầy đủ dữ liệu cho năm 2025. Điều này tạo ra sự không rõ ràng trong tính đầy đủ của thông tin.",
+        "improvement": "Cần chỉ rõ hơn rằng không có cách nào để chứng minh việc không có incident nào trong năm 2025 và nêu rõ giới hạn trong việc thu thập thông tin.",
+        "mechanical": {
+          "violations": [],
+          "score_cap": 100,
+          "tool_calls": 1,
+          "tool_steps": 1
+        },
+        "judge_usage": {
+          "prompt_tokens": 1171,
+          "completion_tokens": 146,
+          "total_tokens": 1317,
+          "cost": 0.00026325,
+          "is_byok": false,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "audio_tokens": 0,
+            "video_tokens": 0
+          },
+          "cost_details": {
+            "upstream_inference_cost": 0.00026325,
+            "upstream_inference_prompt_cost": 0.00017565,
+            "upstream_inference_completions_cost": 8.76e-05
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "image_tokens": 0,
+            "audio_tokens": 0
+          }
+        },
+        "judge_trace_truncated": false
+      }
+    }
+  ]
+}

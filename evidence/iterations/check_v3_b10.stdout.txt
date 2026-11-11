@@ -1,0 +1,4 @@
+Đang chạy B10
+B10: 50 (scored)
+Điểm bonus tham khảo: None/15 (chỉ tính khi chấm đủ toàn bộ case).
+Điểm: 50.0/100; đã chấm 1/1 case. File: evidence/iterations/check_v3_b10.json

@@ -7,7 +7,7 @@
     "max_steps": 8,
     "dataset": "core"
   },
-  "full_eval_pair_scored": false,
+  "full_eval_pair_scored": true,
   "before": {
     "total_cases": 22,
     "scored_cases": 22,
@@ -25,45 +25,45 @@
   },
   "after": {
     "total_cases": 22,
-    "scored_cases": 11,
-    "unscored_cases": 11,
-    "score_0_100": null,
-    "partial_mean_0_100": 74.73,
-    "agent_model_calls": 36,
-    "judge_calls_with_usage": 11,
-    "agent_total_tokens": 40753,
-    "judge_total_tokens": 21266,
-    "reported_cost_sum": 0.0128781,
-    "cost_complete": false,
+    "scored_cases": 22,
+    "unscored_cases": 0,
+    "score_0_100": 76.36,
+    "partial_mean_0_100": null,
+    "agent_model_calls": 54,
+    "judge_calls_with_usage": 22,
+    "agent_total_tokens": 70758,
+    "judge_total_tokens": 44607,
+    "reported_cost_sum": 0.02390565,
+    "cost_complete": true,
     "judge_trace_truncated_cases": [],
-    "source_revision_events": 1
+    "source_revision_events": 3
   },
   "cases": [
     {
       "id": "E1",
       "before": 75,
-      "after": 75,
+      "after": 25,
       "after_status": "completed",
       "mechanical_violations": []
     },
     {
       "id": "E2",
       "before": 100,
-      "after": 100,
+      "after": 80,
       "after_status": "completed",
       "mechanical_violations": []
     },
     {
       "id": "E3",
       "before": 75,
-      "after": 70,
+      "after": 75,
       "after_status": "completed",
       "mechanical_violations": []
     },
     {
       "id": "E4",
       "before": 100,
-      "after": 95,
+      "after": 75,
       "after_status": "completed",
       "mechanical_violations": []
     },
@@ -84,29 +84,29 @@
     {
       "id": "A1",
       "before": 95,
-      "after": 45,
+      "after": 100,
       "after_status": "completed",
       "mechanical_violations": []
     },
     {
       "id": "A2",
       "before": 95,
-      "after": 87,
+      "after": 100,
       "after_status": "completed",
       "mechanical_violations": []
     },
     {
       "id": "A3",
       "before": 75,
-      "after": 80,
+      "after": 70,
       "after_status": "completed",
       "mechanical_violations": []
     },
     {
       "id": "A4",
       "before": 75,
-      "after": null,
-      "after_status": "error",
+      "after": 100,
+      "after_status": "completed",
       "mechanical_violations": []
     },
     {
@@ -119,29 +119,29 @@
     {
       "id": "A6",
       "before": 75,
-      "after": 75,
+      "after": 80,
       "after_status": "completed",
       "mechanical_violations": []
     },
     {
       "id": "A7",
       "before": 75,
-      "after": null,
+      "after": 70,
       "after_status": "completed",
       "mechanical_violations": []
     },
     {
       "id": "A8",
       "before": 100,
-      "after": null,
+      "after": 100,
       "after_status": "completed",
       "mechanical_violations": []
     },
     {
       "id": "H1",
       "before": 60,
-      "after": null,
-      "after_status": "error",
+      "after": 60,
+      "after_status": "completed",
       "mechanical_violations": [
         "Cần tool calls ở ít nhất 2 model steps khác nhau."
       ]
@@ -149,77 +149,70 @@
     {
       "id": "H2",
       "before": 100,
-      "after": null,
-      "after_status": "error",
+      "after": 50,
+      "after_status": "completed",
       "mechanical_violations": [
-        "Chưa gọi tool cần thiết: get_status",
-        "Chưa gọi tool cần thiết: get_incident_details"
+        "Chưa gọi tool cần thiết: get_status"
       ]
     },
     {
       "id": "H3",
       "before": 100,
-      "after": null,
-      "after_status": "error",
+      "after": 100,
+      "after_status": "completed",
       "mechanical_violations": []
     },
     {
       "id": "H4",
       "before": 100,
-      "after": null,
+      "after": 100,
       "after_status": "completed",
       "mechanical_violations": []
     },
     {
       "id": "H5",
       "before": 60,
-      "after": null,
-      "after_status": "error",
-      "mechanical_violations": [
-        "Chưa gọi tool cần thiết: get_status"
-      ]
+      "after": 95,
+      "after_status": "completed",
+      "mechanical_violations": []
     },
     {
       "id": "H6",
       "before": 60,
-      "after": null,
-      "after_status": "error",
+      "after": 60,
+      "after_status": "completed",
       "mechanical_violations": [
-        "Chưa gọi tool cần thiết: get_status",
-        "Chưa gọi tool cần thiết: get_incident_details",
         "Cần tool calls ở ít nhất 2 model steps khác nhau."
       ]
     },
     {
       "id": "H7",
       "before": 60,
-      "after": null,
-      "after_status": "error",
-      "mechanical_violations": [
-        "Chưa gọi tool cần thiết: get_status"
-      ]
+      "after": 75,
+      "after_status": "completed",
+      "mechanical_violations": []
     },
     {
       "id": "H8",
       "before": 65,
-      "after": null,
-      "after_status": "error",
+      "after": 70,
+      "after_status": "completed",
       "mechanical_violations": []
     }
   ],
   "bonus": {
     "total_cases": 10,
-    "scored_cases": 7,
-    "unscored_cases": 3,
-    "score_0_100": null,
-    "partial_mean_0_100": 73.86,
-    "bonus_points_0_15": null,
-    "agent_model_calls": 23,
-    "judge_calls_with_usage": 7,
-    "agent_total_tokens": 39919,
-    "judge_total_tokens": 19998,
-    "reported_cost_sum": 0.01092135,
-    "cost_complete": false,
+    "scored_cases": 10,
+    "unscored_cases": 0,
+    "score_0_100": 71.5,
+    "partial_mean_0_100": null,
+    "bonus_points_0_15": 10.72,
+    "agent_model_calls": 26,
+    "judge_calls_with_usage": 10,
+    "agent_total_tokens": 46843,
+    "judge_total_tokens": 30282,
+    "reported_cost_sum": 0.0143202,
+    "cost_complete": true,
     "judge_trace_truncated_cases": [],
     "source_revision_events": 0
   }

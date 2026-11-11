@@ -1,0 +1,3 @@
+Đang chạy H1
+H1: 60 (scored)
+Điểm: 60.0/100; đã chấm 1/1 case. File: evidence/iterations/check_v3_h1.json

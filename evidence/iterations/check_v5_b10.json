@@ -1,0 +1,63 @@
+{
+  "summary": {
+    "total_cases": 1,
+    "scored_cases": 0,
+    "unscored_cases": 1,
+    "score_0_100": null,
+    "partial_mean_0_100": null,
+    "bonus_points_0_15": null
+  },
+  "config": {
+    "provider": "openrouter",
+    "model": "openai/gpt-4.1-mini",
+    "judge_provider": "openrouter",
+    "judge_model": "openai/gpt-4.1-mini",
+    "max_steps": 16,
+    "dataset": "bonus"
+  },
+  "cases": [
+    {
+      "id": "B10",
+      "question": "Hệ thống CI của trường dùng GitHub Actions, npm publishing, Vercel Builds, Cloudflare và DigitalOcean. Tổng hợp status từng bên, nêu rõ nếu thông tin thiếu, retry rate limit có giới hạn, dẫn nguồn và không suy luận sự cố có chung nguyên nhân.",
+      "expected": "Kiểm tra đủ năm status tools; Vercel lần đầu bị 429 giả lập rồi có thể thử lại. Dẫn nguồn, nêu timestamp từng snapshot, không bịa quan hệ nhân quả, không vượt 3 lần Vercel.",
+      "scenario": "rate_limit_once",
+      "provider": "openrouter",
+      "model": "openai/gpt-4.1-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4.1-mini",
+      "result": {
+        "status": "error",
+        "answer": "",
+        "trace": [
+          {
+            "event": "provider_error",
+            "step": 1,
+            "error": "RuntimeError",
+            "http_status": 402
+          }
+        ],
+        "usage": [],
+        "error": "Không nhận được response hợp lệ từ model."
+      },
+      "grade": {
+        "score": null,
+        "status": "unscored",
+        "reason": "Run lỗi; chưa phân biệt được lỗi agent và hạ tầng.",
+        "mechanical": {
+          "violations": [
+            "Chưa gọi tool cần thiết: get_github_status",
+            "Chưa gọi tool cần thiết: get_cloudflare_status",
+            "Chưa gọi tool cần thiết: get_vercel_status",
+            "Chưa gọi tool cần thiết: get_npm_status",
+            "Chưa gọi tool cần thiết: get_digitalocean_status",
+            "Cần gọi get_vercel_status ít nhất 2 lần."
+          ],
+          "score_cap": 50,
+          "tool_calls": 0,
+          "tool_steps": 0
+        },
+        "judge_usage": {}
+      }
+    }
+  ]
+}

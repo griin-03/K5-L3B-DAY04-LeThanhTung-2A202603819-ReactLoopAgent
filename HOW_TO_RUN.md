@@ -15,7 +15,7 @@ source .env
 
 Nếu clone trên máy khác, tạo venv bằng Python 3.10+, copy `.env.example` thành `.env` nếu chưa có, rồi điền provider/model/key. Lần làm bài này dùng `openrouter` và `openai/gpt-4o-mini` cho cả agent lẫn judge. Không đưa key vào file Python.
 
-Đọc `NOTES.md` trước khi chạy lại eval. Hai bộ kết quả đã nộp được giữ nguyên; muốn đo thêm thì dùng tên file khác:
+Đọc `NOTES.md` trước khi chạy lại eval. Các bộ kết quả của bản chốt v2 đã được lưu đầy đủ; muốn đo thêm thì dùng tên file khác:
 
 ```bash
 source .env
@@ -25,7 +25,9 @@ source .env
 
 Unit tests không gọi mạng. Các lệnh `run.py` và eval gọi LLM thật, dùng quota API. Mặc định tools đọc snapshot; thêm `--mode live` vào `run.py` để truy cập status API thật. Snapshot không phải tình trạng dịch vụ tại thời điểm chạy lệnh.
 
-Hiện các lượt gọi đã dừng do HTTP 402. Sau khi có quota, chạy lại nguyên bộ vào file mới; giữ file lỗi để đối chiếu. Chỉ dùng run đã chấm đủ, tổng điểm khác `null`. `evidence/compare.py` kiểm tra điều kiện này; thêm `--allow-incomplete` chỉ để đọc trạng thái đang thiếu, không biến run đó thành hợp lệ. Không cần deploy web hay giữ tiến trình nào chạy nền.
+Bản chốt v2 đã chấm đủ 22 case chính và 10 bonus. Chạy `.venv/bin/python evidence/compare.py` để kiểm tra cặp kết quả, hash các file giữ nguyên và đọc số calls/token/cost. Không cần key cho lệnh này hoặc cho việc đọc JSON đã lưu.
+
+Các thử nghiệm v3–v5 nằm trong `evidence/iterations`, không phải code đang chạy ở thư mục gốc. v5 thử `gpt-4.1-mini` và adapter có tùy chọn giới hạn đầu ra 2048 token; lượt đầy đủ vẫn gặp HTTP 402. Xem [EXPERIMENTS.md](evidence/EXPERIMENTS.md) trước khi thử lại. Bản chốt dùng adapter gốc và `gpt-4o-mini`, không dùng tùy chọn đó. Hiện đã dừng gọi API theo yêu cầu; chỉ chạy thêm khi có quota và cần đo lại. Không cần deploy web hay giữ tiến trình nào chạy nền.
 
 ## Những chỗ cần hiểu trong agent.py
 

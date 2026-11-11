@@ -1,14 +1,20 @@
-# Trạng thái bài Day 04
+# Trạng thái bản nộp Day 04
 
-Lê Thanh Tùng — 2A202603819 — L3B.
+Lê Thanh Tùng — **2A202603819** — **L3B**.
 
-- Code CLI hoàn tất, Python standard library; không cần deploy web.
-- Unit tests trên Mac: **54 chính + 3 bonus, tất cả OK**.
-- Baseline: **22/22 case được chấm, 80.68/100**.
-- Thử nghiệm v1: **22/22, 77.05/100**; giữ kết quả giảm điểm trong `evidence/iterations`.
-- Bản code hiện tại v2: `eval_after.json` mới **11/22** case được chấm; tổng **null** do API HTTP 402.
-- Bonus: **7/10** case được chấm; tổng/điểm bonus **null**.
+Bản chốt là **v2**, khớp [source snapshot](evidence/after/agent.py) và các file eval gốc:
 
-**Chưa đủ điều kiện nộp hoàn chỉnh** theo SUBMISSION.md vì eval sau cải tiến chưa có điểm tổng. Theo yêu cầu của người dùng, tạm dừng gọi API và hoàn thiện code/tài liệu hiện có.
+| Hạng mục | Kết quả |
+|---|---|
+| Unit tests | 54 chính + 3 bonus, đều qua |
+| `eval_before.json` | 22/22 case, 80.68/100 |
+| `eval_after.json` | 22/22 case, 76.36/100 |
+| `eval_bonus.json` | 10/10 case, 71.50/100; bonus tham khảo 10.72/15 |
+| Báo cáo | `NOTES.md`, đủ 5 mục |
+| CLI | Python standard library; không cần deploy web |
 
-Đọc [NOTES.md](NOTES.md) để xem trace, các thay đổi, so sánh và lỗi còn lại. Xem [HOW_TO_RUN.md](HOW_TO_RUN.md) để chạy lại khi có quota. Các file eval lỗi được giữ nguyên; không lấy trung bình phần đã chấm thay điểm tổng và không ghép case giữa nhiều run.
+Cặp before/after cùng provider/model/judge/snapshot/dataset và `max_steps=8`; tổng điểm đều khác `null`. Không ghép case từ nhiều lần chạy. H7 tăng từ 60 lên 75, nhưng điểm tổng giảm 4.32; không tuyên bố vượt 85 hoặc coi điểm eval là điểm lab.
+
+Các thử nghiệm mới hơn và các lượt lỗi HTTP 402 được giữ trong [EXPERIMENTS.md](evidence/EXPERIMENTS.md), tách khỏi bản chốt. Xem [NOTES.md](NOTES.md) để đọc trace, so sánh và giới hạn; [HOW_TO_RUN.md](HOW_TO_RUN.md) để chạy bài.
+
+Việc còn lại khi nộp: người học đọc và giải thích được code, rồi tự dán link repo vào bài Day 04 trên LMS. Repo không xác nhận thời hạn hay trạng thái nộp trên LMS.

@@ -58,5 +58,40 @@
     }
   ],
   "bonus_workers": 1,
-  "error_trace_note": "Record only sanitized HTTP status number on provider errors; never exception body or key."
+  "error_trace_note": "Record only sanitized HTTP status number on provider errors; never exception body or key.",
+  "submission_selection": {
+    "version": "v2",
+    "reason": "Last version with fully scored core and bonus reports matching its evaluated source; later experiments retained separately after user chose to stop API calls.",
+    "core_report": "eval_after.json",
+    "core_scored_cases": 22,
+    "core_score_0_100": 76.36,
+    "bonus_report": "eval_bonus.json",
+    "bonus_scored_cases": 10,
+    "bonus_score_0_100": 71.5,
+    "bonus_points_0_15": 10.72,
+    "source_snapshot": "evidence/after/agent.py",
+    "selection_date": "2026-11-11"
+  },
+  "post_v2_experiments": {
+    "notes": "evidence/EXPERIMENTS.md",
+    "v3_source": "evidence/iterations/v3-agent.py",
+    "v4_source": "evidence/iterations/v4-agent.py",
+    "v4_full_core_report": "evidence/iterations/eval_after_v4_gpt4omini.json",
+    "v5_source": "evidence/iterations/v5-agent.py",
+    "v5_provider_snapshot": "evidence/iterations/v5-providers.py",
+    "v5_full_run": {
+      "model": "openai/gpt-4.1-mini",
+      "judge_model": "openai/gpt-4.1-mini",
+      "max_output_tokens": 2048,
+      "workers_before": 3,
+      "workers_after": 3,
+      "workers_bonus": 2,
+      "baseline_scored": 9,
+      "after_scored": 3,
+      "bonus_scored": 0,
+      "total_scores": null,
+      "failure": "HTTP 402"
+    },
+    "runtime_changes_selected": false
+  }
 }

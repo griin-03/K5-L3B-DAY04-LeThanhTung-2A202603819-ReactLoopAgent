@@ -1,0 +1,3 @@
+Đang chạy H6
+H6: 75 (scored)
+Điểm: 75.0/100; đã chấm 1/1 case. File: evidence/iterations/check_v4_h6.json

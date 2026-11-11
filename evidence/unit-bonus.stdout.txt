@@ -3,6 +3,6 @@ test_bonus_schemas_and_system_prompt (test_agent.BonusAgentTests) ... ok
 test_invalid_arguments_observation_returns_to_model (test_agent.BonusAgentTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 3 tests in 0.003s
+Ran 3 tests in 0.002s
 
 OK

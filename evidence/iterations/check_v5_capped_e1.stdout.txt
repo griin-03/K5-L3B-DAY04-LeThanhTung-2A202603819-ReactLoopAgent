@@ -1,0 +1,3 @@
+Đang chạy E1
+E1: 100 (scored)
+Điểm: 100.0/100; đã chấm 1/1 case. File: evidence/iterations/check_v5_capped_e1.json

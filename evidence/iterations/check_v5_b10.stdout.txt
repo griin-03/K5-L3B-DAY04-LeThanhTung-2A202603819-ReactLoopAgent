@@ -1,0 +1,5 @@
+Đang chạy B10
+B10: None (unscored)
+Chưa có điểm tổng do có case chưa được chấm; xem reason trong file.
+Điểm bonus tham khảo: None/15 (chỉ tính khi chấm đủ toàn bộ case).
+Điểm: None/100; đã chấm 0/1 case. File: evidence/iterations/check_v5_b10.json

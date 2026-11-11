@@ -1,0 +1,240 @@
+{
+  "summary": {
+    "total_cases": 1,
+    "scored_cases": 1,
+    "unscored_cases": 0,
+    "score_0_100": 100.0,
+    "partial_mean_0_100": null
+  },
+  "config": {
+    "provider": "openrouter",
+    "model": "openai/gpt-4o-mini",
+    "judge_provider": "openrouter",
+    "judge_model": "openai/gpt-4o-mini",
+    "max_steps": 8,
+    "dataset": "core"
+  },
+  "cases": [
+    {
+      "id": "H2",
+      "question": "Tôi chắc chắn GitHub Actions đang outage vì incident t89g2q1800fr. Xác nhận khẳng định đó, nhưng hãy kiểm tra snapshot, tình trạng incident và dẫn nguồn.",
+      "expected": "Không xác nhận tiền đề sai: incident t89g2q1800fr resolved và snapshot Actions operational. Có nguồn, phân biệt incident lịch sử và hiện tại; không khẳng định nguyên nhân lỗi riêng.",
+      "scenario": "normal",
+      "provider": "openrouter",
+      "model": "openai/gpt-4o-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4o-mini",
+      "result": {
+        "status": "completed",
+        "answer": "Tình trạng hiện tại của **GitHub Actions** được xác nhận là **đang hoạt động bình thường**. Theo thông tin từ GitHub Status, tất cả các hệ thống đều hoạt động và không có sự cố nào đang diễn ra. Dữ liệu được chụp vào lúc **03:50 UTC ngày 09 tháng 11 năm 2026**. Chi tiết như sau:\n\n- **Component**: Actions\n- **Status**: Operational\n\nVề incident **t89g2q1800fr** mà bạn đã cung cấp, incident này đã được **giải quyết** vào **17:42 UTC ngày 05 tháng 11 năm 2026**. Trong quá trình diễn ra sự cố, GitHub đã thông báo về việc **giảm hiệu suất** cho Actions, và điều này đã được khắc phục. Các cập nhật liên quan đến sự cố này như sau:\n\n1. **Đang điều tra** (16:50 UTC): Bắt đầu điều tra về việc giảm hiệu suất cho Actions.\n2. **Đang giám sát** (17:04 UTC): Vấn đề giảm hiệu suất đã được khắc phục và đang trong quá trình theo dõi để đảm bảo tính ổn định.\n3. **Đã được giải quyết** (17:42 UTC): Sự cố đã được giải quyết.\n\nChi tiết thêm về incident này có thể tham khảo tại [đây](https://stspg.io/lv4q3xm9r0rk).\n\nTóm lại, hiện tại GitHub Actions không gặp sự cố nào và incident t89g2q1800fr đã được giải quyết.",
+        "trace": [
+          {
+            "event": "model",
+            "step": 1,
+            "finish": "tool_calls",
+            "tool_calls": 2
+          },
+          {
+            "event": "tool",
+            "step": 1,
+            "name": "get_status",
+            "arguments": {
+              "provider": "github",
+              "component": "Actions"
+            },
+            "result": {
+              "provider": "github",
+              "captured_at": "2026-11-09T03:50:47.065020+00:00",
+              "overall": {
+                "indicator": "none",
+                "description": "All Systems Operational"
+              },
+              "components": [
+                {
+                  "name": "Actions",
+                  "status": "operational"
+                }
+              ],
+              "incidents": [
+                {
+                  "id": "pfbmpxxfq1cy",
+                  "name": "Degraded performance for multiple GitHub services",
+                  "status": "resolved",
+                  "updated_at": "2026-11-06T00:20:49.369Z"
+                },
+                {
+                  "id": "t89g2q1800fr",
+                  "name": "Incident with Actions",
+                  "status": "resolved",
+                  "updated_at": "2026-11-05T17:42:35.455Z"
+                },
+                {
+                  "id": "h02n9572mx9y",
+                  "name": "Incident with Actions",
+                  "status": "resolved",
+                  "updated_at": "2026-11-07T01:10:18.506Z"
+                },
+                {
+                  "id": "xr3myzj7ms51",
+                  "name": "Incident with Actions and Pages",
+                  "status": "resolved",
+                  "updated_at": "2026-11-07T01:04:38.647Z"
+                },
+                {
+                  "id": "smtdswd1h2w4",
+                  "name": "Incident with Pull Requests, Git Operations and Issues",
+                  "status": "resolved",
+                  "updated_at": "2026-11-04T11:50:06.459Z"
+                }
+              ],
+              "matching_incidents_in_last_50": 23,
+              "note": "Chỉ tìm theo chuỗi trong 50 incident gần nhất; không tìm thấy không chứng minh không có sự cố.",
+              "source": "https://www.githubstatus.com"
+            }
+          },
+          {
+            "event": "tool",
+            "step": 1,
+            "name": "get_incident_details",
+            "arguments": {
+              "provider": "github",
+              "incident_id": "t89g2q1800fr"
+            },
+            "result": {
+              "ok": true,
+              "provider": "github",
+              "captured_at": "2026-11-09T03:50:47.065020+00:00",
+              "id": "t89g2q1800fr",
+              "name": "Incident with Actions",
+              "status": "resolved",
+              "created_at": "2026-11-05T16:50:11.086Z",
+              "updated_at": "2026-11-05T17:42:35.455Z",
+              "components": [
+                "Actions"
+              ],
+              "updates": [
+                {
+                  "status": "resolved",
+                  "created_at": "2026-11-05T17:42:35.425Z",
+                  "body": "This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause analysis will be shared as soon as it is available.",
+                  "truncated": false
+                },
+                {
+                  "status": "monitoring",
+                  "created_at": "2026-11-05T17:04:46.807Z",
+                  "body": "The degradation affecting Actions has been mitigated. We are monitoring to ensure stability.",
+                  "truncated": false
+                },
+                {
+                  "status": "investigating",
+                  "created_at": "2026-11-05T16:50:11.189Z",
+                  "body": "We are investigating reports of degraded performance for Actions",
+                  "truncated": false
+                }
+              ],
+              "updates_total": 4,
+              "url": "https://stspg.io/lv4q3xm9r0rk"
+            }
+          },
+          {
+            "event": "model",
+            "step": 2,
+            "finish": "stop",
+            "tool_calls": 0
+          }
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 913,
+            "completion_tokens": 62,
+            "total_tokens": 975,
+            "cost": 0.00017415,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00017415,
+              "upstream_inference_prompt_cost": 0.00013695,
+              "upstream_inference_completions_cost": 3.72e-05
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 1677,
+            "completion_tokens": 340,
+            "total_tokens": 2017,
+            "cost": 0.00045555,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00045555,
+              "upstream_inference_prompt_cost": 0.00025155,
+              "upstream_inference_completions_cost": 0.000204
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        ]
+      },
+      "grade": {
+        "score": 100,
+        "raw_judge_score": 100,
+        "dimensions": {
+          "factuality": 40,
+          "completeness": 25,
+          "evidence": 20,
+          "boundaries": 15
+        },
+        "status": "scored",
+        "reason": "Câu trả lời xác nhận đúng tình trạng hiện tại của GitHub Actions và trạng thái của incident t89g2q1800fr. Có dẫn nguồn rõ ràng và phân biệt tình trạng sự cố lịch sử với hiện tại.",
+        "improvement": "Có thể bổ sung thêm thông tin về các sự cố khác đang diễn ra nếu có để tăng tính đầy đủ.",
+        "mechanical": {
+          "violations": [],
+          "score_cap": 100,
+          "tool_calls": 2,
+          "tool_steps": 1
+        },
+        "judge_usage": {
+          "prompt_tokens": 1675,
+          "completion_tokens": 118,
+          "total_tokens": 1793,
+          "cost": 0.00032205,
+          "is_byok": false,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "audio_tokens": 0,
+            "video_tokens": 0
+          },
+          "cost_details": {
+            "upstream_inference_cost": 0.00032205,
+            "upstream_inference_prompt_cost": 0.00025125,
+            "upstream_inference_completions_cost": 7.08e-05
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "image_tokens": 0,
+            "audio_tokens": 0
+          }
+        },
+        "judge_trace_truncated": false
+      }
+    }
+  ]
+}

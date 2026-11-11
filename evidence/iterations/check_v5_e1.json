@@ -1,0 +1,55 @@
+{
+  "summary": {
+    "total_cases": 1,
+    "scored_cases": 0,
+    "unscored_cases": 1,
+    "score_0_100": null,
+    "partial_mean_0_100": null
+  },
+  "config": {
+    "provider": "openrouter",
+    "model": "openai/gpt-4.1-mini",
+    "judge_provider": "openrouter",
+    "judge_model": "openai/gpt-4.1-mini",
+    "max_steps": 8,
+    "dataset": "core"
+  },
+  "cases": [
+    {
+      "id": "E1",
+      "question": "GitHub Actions hiện có sự cố không? Hãy xem cả incident gần đây và dẫn nguồn.",
+      "expected": "Tại thời điểm snapshot GitHub overall none; incident Actions 05/11 resolved. Không nói sự cố cũ đang diễn ra.",
+      "scenario": "normal",
+      "provider": "openrouter",
+      "model": "openai/gpt-4.1-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4.1-mini",
+      "result": {
+        "status": "error",
+        "answer": "",
+        "trace": [
+          {
+            "event": "provider_error",
+            "step": 1,
+            "error": "RuntimeError",
+            "http_status": 402
+          }
+        ],
+        "usage": [],
+        "error": "Không nhận được response hợp lệ từ model."
+      },
+      "grade": {
+        "score": null,
+        "status": "unscored",
+        "reason": "Run lỗi; chưa phân biệt được lỗi agent và hạ tầng.",
+        "mechanical": {
+          "violations": [],
+          "score_cap": 100,
+          "tool_calls": 0,
+          "tool_steps": 0
+        },
+        "judge_usage": {}
+      }
+    }
+  ]
+}

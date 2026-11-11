@@ -1,0 +1,23 @@
+Đang chạy B1Đang chạy B2
+
+B2: None (unscored)
+Đang chạy B3
+B1: None (unscored)
+Đang chạy B4
+B4: None (unscored)
+Đang chạy B5
+B3: None (unscored)
+Đang chạy B6
+B5: None (unscored)
+Đang chạy B7
+B6: None (unscored)
+Đang chạy B8
+B7: None (unscored)B8: None (unscored)
+Đang chạy B9
+
+Đang chạy B10
+B9: None (unscored)
+B10: None (unscored)
+Điểm bonus tham khảo: None/15 (chỉ tính khi chấm đủ toàn bộ case).
+Điểm: None/100; đã chấm 0/10 case. File: eval_bonus.json
+Chưa có điểm tổng do có case chưa được chấm; xem reason trong file.

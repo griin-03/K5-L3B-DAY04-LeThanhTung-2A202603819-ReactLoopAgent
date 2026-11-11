@@ -1,0 +1,1346 @@
+{
+  "summary": {
+    "total_cases": 1,
+    "scored_cases": 1,
+    "unscored_cases": 0,
+    "score_0_100": 0.0,
+    "partial_mean_0_100": null,
+    "bonus_points_0_15": null
+  },
+  "config": {
+    "provider": "openrouter",
+    "model": "openai/gpt-4o-mini",
+    "judge_provider": "openrouter",
+    "judge_model": "openai/gpt-4o-mini",
+    "max_steps": 16,
+    "dataset": "bonus"
+  },
+  "cases": [
+    {
+      "id": "B10",
+      "question": "Hệ thống CI của trường dùng GitHub Actions, npm publishing, Vercel Builds, Cloudflare và DigitalOcean. Tổng hợp status từng bên, nêu rõ nếu thông tin thiếu, retry rate limit có giới hạn, dẫn nguồn và không suy luận sự cố có chung nguyên nhân.",
+      "expected": "Kiểm tra đủ năm status tools; Vercel lần đầu bị 429 giả lập rồi có thể thử lại. Dẫn nguồn, nêu timestamp từng snapshot, không bịa quan hệ nhân quả, không vượt 3 lần Vercel.",
+      "scenario": "rate_limit_once",
+      "provider": "openrouter",
+      "model": "openai/gpt-4o-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4o-mini",
+      "result": {
+        "status": "max_steps",
+        "answer": "",
+        "trace": [
+          {
+            "event": "model",
+            "step": 1,
+            "finish": "tool_calls",
+            "tool_calls": 5
+          },
+          {
+            "event": "tool",
+            "step": 1,
+            "name": "get_github_status",
+            "arguments": {},
+            "result": {
+              "provider": "github",
+              "captured_at": "2026-11-09T03:50:47.065020+00:00",
+              "overall": {
+                "indicator": "none",
+                "description": "All Systems Operational"
+              },
+              "components": [],
+              "incidents": [
+                {
+                  "id": "pyynvrm1vskw",
+                  "name": "Increase in timeouts for some unauthenticated users",
+                  "status": "resolved",
+                  "updated_at": "2026-11-08T12:32:35.646Z"
+                },
+                {
+                  "id": "pfbmpxxfq1cy",
+                  "name": "Degraded performance for multiple GitHub services",
+                  "status": "resolved",
+                  "updated_at": "2026-11-06T00:20:49.369Z"
+                },
+                {
+                  "id": "t89g2q1800fr",
+                  "name": "Incident with Actions",
+                  "status": "resolved",
+                  "updated_at": "2026-11-05T17:42:35.455Z"
+                },
+                {
+                  "id": "h02n9572mx9y",
+                  "name": "Incident with Actions",
+                  "status": "resolved",
+                  "updated_at": "2026-11-07T01:10:18.506Z"
+                },
+                {
+                  "id": "xr3myzj7ms51",
+                  "name": "Incident with Actions and Pages",
+                  "status": "resolved",
+                  "updated_at": "2026-11-07T01:04:38.647Z"
+                },
+                {
+                  "id": "smtdswd1h2w4",
+                  "name": "Incident with Pull Requests, Git Operations and Issues",
+                  "status": "resolved",
+                  "updated_at": "2026-11-04T11:50:06.459Z"
+                },
+                {
+                  "id": "tc28c0wzrnpz",
+                  "name": "Increased task-related errors for Copilot Mission Control",
+                  "status": "resolved",
+                  "updated_at": "2026-11-04T10:01:44.589Z"
+                },
+                {
+                  "id": "13b6lyl8d7bz",
+                  "name": "Incident with Git Operations",
+                  "status": "resolved",
+                  "updated_at": "2026-11-06T23:36:05.165Z"
+                }
+              ],
+              "match_count": 50,
+              "returned": 8,
+              "note": "Chỉ tìm trong response incidents đã lấy; danh sách trả về tối đa 8 mục.",
+              "source": "https://www.githubstatus.com"
+            }
+          },
+          {
+            "event": "tool",
+            "step": 1,
+            "name": "get_npm_status",
+            "arguments": {},
+            "result": {
+              "provider": "npm",
+              "captured_at": "2026-11-10T14:45:51.077785+00:00",
+              "overall": {
+                "indicator": "none",
+                "description": "All Systems Operational"
+              },
+              "components": [],
+              "incidents": [
+                {
+                  "id": "cc0t2r4403sy",
+                  "name": "Minor issues impacting package publish",
+                  "status": "resolved",
+                  "updated_at": "2026-11-07T15:05:05.127Z"
+                },
+                {
+                  "id": "hf0q2nhdk5cp",
+                  "name": "View package and auth outage on npmjs.com",
+                  "status": "resolved",
+                  "updated_at": "2026-10-26T06:30:19.136Z"
+                },
+                {
+                  "id": "56x3sh4qhr9s",
+                  "name": "Degraded Publish, Install, and View Package",
+                  "status": "resolved",
+                  "updated_at": "2026-10-22T11:59:57.769Z"
+                },
+                {
+                  "id": "xfp75s9j3bp8",
+                  "name": "Degraded Package Install and Publishing",
+                  "status": "resolved",
+                  "updated_at": "2026-10-22T04:24:18.534Z"
+                },
+                {
+                  "id": "nwrj52br2kjv",
+                  "name": "Issues with login and viewing packages",
+                  "status": "resolved",
+                  "updated_at": "2026-10-14T11:44:23.122Z"
+                },
+                {
+                  "id": "zff9xpz80gwf",
+                  "name": "Issues with npm package publish and private install",
+                  "status": "resolved",
+                  "updated_at": "2026-09-27T06:47:55.042Z"
+                },
+                {
+                  "id": "y5yr5z8grj7q",
+                  "name": "Package Publish Degradation",
+                  "status": "resolved",
+                  "updated_at": "2026-09-15T18:19:35.940Z"
+                },
+                {
+                  "id": "s219g6z13p2n",
+                  "name": "Publishing Packages Degraded Performance",
+                  "status": "resolved",
+                  "updated_at": "2026-09-15T16:35:22.661Z"
+                }
+              ],
+              "match_count": 50,
+              "returned": 8,
+              "note": "Chỉ tìm trong response incidents đã lấy; danh sách trả về tối đa 8 mục.",
+              "source": "https://status.npmjs.org"
+            }
+          },
+          {
+            "event": "tool",
+            "step": 1,
+            "name": "get_vercel_status",
+            "arguments": {},
+            "result": {
+              "ok": false,
+              "error": "RATE_LIMITED",
+              "http_status": 429,
+              "retry_after_seconds": 0,
+              "retriable": true,
+              "message": "429 giả lập; retry có giới hạn."
+            }
+          },
+          {
+            "event": "tool",
+            "step": 1,
+            "name": "get_cloudflare_status",
+            "arguments": {},
+            "result": {
+              "provider": "cloudflare",
+              "captured_at": "2026-11-09T03:50:47.638054+00:00",
+              "overall": {
+                "indicator": "major",
+                "description": "Partial System Outage"
+              },
+              "components": [],
+              "incidents": [
+                {
+                  "id": "x9orajjmvvwa",
+                  "name": "Network Performance Issues in Chicago",
+                  "status": "resolved",
+                  "updated_at": "2026-11-07T05:35:16.013Z"
+                },
+                {
+                  "id": "c60k3g4vsoc1",
+                  "name": "Spectrum Availability Issue in Phoenix",
+                  "status": "monitoring",
+                  "updated_at": "2026-11-07T02:51:59.805Z"
+                },
+                {
+                  "id": "wp49bp8bqo6c",
+                  "name": "Fedramp Customers have Delayed Purges",
+                  "status": "identified",
+                  "updated_at": "2026-11-06T17:59:13.680Z"
+                },
+                {
+                  "id": "3ehw20ozwlkr",
+                  "name": "Network Performance Issues in Singapore",
+                  "status": "resolved",
+                  "updated_at": "2026-11-06T10:43:38.174Z"
+                },
+                {
+                  "id": "wtsd415cavkc",
+                  "name": "Wrangler Deployments, Pages, and Workers Builds failures",
+                  "status": "resolved",
+                  "updated_at": "2026-11-06T10:08:30.899Z"
+                },
+                {
+                  "id": "oy8gxjb38yse",
+                  "name": "Increased Errors for Durable Objects in Western Europe",
+                  "status": "resolved",
+                  "updated_at": "2026-11-06T09:05:19.945Z"
+                },
+                {
+                  "id": "yaa0witbl2me",
+                  "name": "Workers Builds Issues",
+                  "status": "resolved",
+                  "updated_at": "2026-11-05T20:20:10.166Z"
+                },
+                {
+                  "id": "1i6fnludjh1m",
+                  "name": "Network disruption across multiple colocations in India",
+                  "status": "resolved",
+                  "updated_at": "2026-11-05T16:16:48.247Z"
+                }
+              ],
+              "match_count": 50,
+              "returned": 8,
+              "note": "Chỉ tìm trong response incidents đã lấy; danh sách trả về tối đa 8 mục.",
+              "source": "https://www.cloudflarestatus.com"
+            }
+          },
+          {
+            "event": "tool",
+            "step": 1,
+            "name": "get_digitalocean_status",
+            "arguments": {},
+            "result": {
+              "provider": "digitalocean",
+              "captured_at": "2026-11-10T14:45:52.407939+00:00",
+              "overall": {
+                "indicator": "none",
+                "description": "All Systems Operational"
+              },
+              "components": [],
+              "incidents": [
+                {
+                  "id": "ckmpdk5z9xj9",
+                  "name": "Kubernetes Cluster Management Operations",
+                  "status": "resolved",
+                  "updated_at": "2026-10-28T01:55:12.437Z"
+                },
+                {
+                  "id": "rl0fl1jtxw7l",
+                  "name": "App Platform Deployments",
+                  "status": "resolved",
+                  "updated_at": "2026-10-13T17:09:48.123Z"
+                },
+                {
+                  "id": "qfg5hmfhxw5d",
+                  "name": "DNS Resolution for Managed Kubernetes",
+                  "status": "resolved",
+                  "updated_at": "2026-10-11T23:29:01.711Z"
+                },
+                {
+                  "id": "5fxykytg48dx",
+                  "name": "VPC Networking Availability",
+                  "status": "resolved",
+                  "updated_at": "2026-10-05T12:13:16.787Z"
+                },
+                {
+                  "id": "6z6dt3t1bhb9",
+                  "name": "A Network Disruption in BLR1 Region Impacted Multiple Products (Resolved)",
+                  "status": "resolved",
+                  "updated_at": "2026-10-03T14:51:13.637Z"
+                },
+                {
+                  "id": "grb2v0td1nq5",
+                  "name": "Support Portal Service Disruption",
+                  "status": "resolved",
+                  "updated_at": "2026-09-16T21:09:31.524Z"
+                },
+                {
+                  "id": "1t16vfgq3zpx",
+                  "name": "Power Degradation impacting GPU Performance in ATL1",
+                  "status": "resolved",
+                  "updated_at": "2026-09-09T12:25:52.160Z"
+                },
+                {
+                  "id": "4qwm6pzlx1z3",
+                  "name": "Cloud Control Panel and API",
+                  "status": "postmortem",
+                  "updated_at": "2026-09-15T19:11:53.801Z"
+                }
+              ],
+              "match_count": 50,
+              "returned": 8,
+              "note": "Chỉ tìm trong response incidents đã lấy; danh sách trả về tối đa 8 mục.",
+              "source": "https://status.digitalocean.com"
+            }
+          },
+          {
+            "event": "observation_review",
+            "step": 1,
+            "failed_status_requests": [
+              {
+                "provider": "vercel",
+                "error": "RATE_LIMITED"
+              }
+            ],
+            "referenced_incident_urls": []
+          },
+          {
+            "event": "model",
+            "step": 2,
+            "finish": "stop",
+            "tool_calls": 0
+          },
+          {
+            "event": "validation_incomplete_investigation",
+            "step": 2,
+            "unread_incident_urls": [],
+            "retry_requests": [
+              {
+                "name": "get_vercel_status",
+                "arguments": {}
+              }
+            ]
+          },
+          {
+            "event": "model",
+            "step": 3,
+            "finish": "tool_calls",
+            "tool_calls": 9
+          },
+          {
+            "event": "tool",
+            "step": 3,
+            "name": "get_incident_details",
+            "arguments": {
+              "provider": "github",
+              "incident_id": "pyynvrm1vskw"
+            },
+            "result": {
+              "ok": true,
+              "provider": "github",
+              "id": "pyynvrm1vskw",
+              "name": "Increase in timeouts for some unauthenticated users",
+              "status": "resolved",
+              "created_at": "2026-11-08T10:36:05.481Z",
+              "updated_at": "2026-11-08T12:32:35.646Z",
+              "captured_at": "2026-11-09T03:50:47.065020+00:00",
+              "components": [
+                "API Requests"
+              ],
+              "updates": [
+                {
+                  "status": "resolved",
+                  "created_at": "2026-11-08T12:32:35.611Z",
+                  "body": "This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause analysis will be shared as soon as it is available.",
+                  "truncated": false
+                },
+                {
+                  "status": "monitoring",
+                  "created_at": "2026-11-08T12:29:30.591Z",
+                  "body": "The degradation has been mitigated. We are monitoring to ensure stability.",
+                  "truncated": false
+                }
+              ],
+              "offset": 0,
+              "total_updates": 7,
+              "next_offset": 2,
+              "url": "https://stspg.io/5yt31mfmyc6p"
+            }
+          },
+          {
+            "event": "tool",
+            "step": 3,
+            "name": "get_incident_details",
+            "arguments": {
+              "provider": "github",
+              "incident_id": "pfbmpxxfq1cy"
+            },
+            "result": {
+              "ok": true,
+              "provider": "github",
+              "id": "pfbmpxxfq1cy",
+              "name": "Degraded performance for multiple GitHub services",
+              "status": "resolved",
+              "created_at": "2026-11-05T23:36:06.204Z",
+              "updated_at": "2026-11-06T00:20:49.369Z",
+              "captured_at": "2026-11-09T03:50:47.065020+00:00",
+              "components": [
+                "Git Operations",
+                "Issues",
+                "Actions",
+                "Pages"
+              ],
+              "updates": [
+                {
+                  "status": "resolved",
+                  "created_at": "2026-11-06T00:20:49.344Z",
+                  "body": "This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause analysis will be shared as soon as it is available.",
+                  "truncated": false
+                },
+                {
+                  "status": "monitoring",
+                  "created_at": "2026-11-06T00:19:59.777Z",
+                  "body": "This incident has been resolved. All affected services, including Git operations, Issues, Actions, and API access, have recovered and remained stable. Thank you for your patience. We'll share more details in our availability report.",
+                  "truncated": false
+                }
+              ],
+              "offset": 0,
+              "total_updates": 8,
+              "next_offset": 2,
+              "url": "https://stspg.io/s5bs6jn41fwh"
+            }
+          },
+          {
+            "event": "tool",
+            "step": 3,
+            "name": "get_incident_details",
+            "arguments": {
+              "provider": "github",
+              "incident_id": "t89g2q1800fr"
+            },
+            "result": {
+              "ok": true,
+              "provider": "github",
+              "id": "t89g2q1800fr",
+              "name": "Incident with Actions",
+              "status": "resolved",
+              "created_at": "2026-11-05T16:50:11.086Z",
+              "updated_at": "2026-11-05T17:42:35.455Z",
+              "captured_at": "2026-11-09T03:50:47.065020+00:00",
+              "components": [
+                "Actions"
+              ],
+              "updates": [
+                {
+                  "status": "resolved",
+                  "created_at": "2026-11-05T17:42:35.425Z",
+                  "body": "This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause analysis will be shared as soon as it is available.",
+                  "truncated": false
+                },
+                {
+                  "status": "monitoring",
+                  "created_at": "2026-11-05T17:04:46.807Z",
+                  "body": "The degradation affecting Actions has been mitigated. We are monitoring to ensure stability.",
+                  "truncated": false
+                }
+              ],
+              "offset": 0,
+              "total_updates": 4,
+              "next_offset": 2,
+              "url": "https://stspg.io/lv4q3xm9r0rk"
+            }
+          },
+          {
+            "event": "tool",
+            "step": 3,
+            "name": "get_incident_details",
+            "arguments": {
+              "provider": "github",
+              "incident_id": "h02n9572mx9y"
+            },
+            "result": {
+              "ok": true,
+              "provider": "github",
+              "id": "h02n9572mx9y",
+              "name": "Incident with Actions",
+              "status": "resolved",
+              "created_at": "2026-11-04T17:40:33.675Z",
+              "updated_at": "2026-11-07T01:10:18.506Z",
+              "captured_at": "2026-11-09T03:50:47.065020+00:00",
+              "components": [
+                "Actions"
+              ],
+              "updates": [
+                {
+                  "status": "resolved",
+                  "created_at": "2026-11-04T18:16:08.361Z",
+                  "body": "Please refer to the combined summary in this related incident: https://www.githubstatus.com/incidents/xr3myzj7ms51",
+                  "truncated": false
+                },
+                {
+                  "status": "monitoring",
+                  "created_at": "2026-11-04T18:07:51.114Z",
+                  "body": "The degradation affecting Actions has been mitigated. We are monitoring to ensure stability.",
+                  "truncated": false
+                }
+              ],
+              "offset": 0,
+              "total_updates": 4,
+              "next_offset": 2,
+              "url": "https://stspg.io/7pwv28hvkmz8"
+            }
+          },
+          {
+            "event": "tool",
+            "step": 3,
+            "name": "get_incident_details",
+            "arguments": {
+              "provider": "github",
+              "incident_id": "xr3myzj7ms51"
+            },
+            "result": {
+              "ok": true,
+              "provider": "github",
+              "id": "xr3myzj7ms51",
+              "name": "Incident with Actions and Pages",
+              "status": "resolved",
+              "created_at": "2026-11-04T16:05:31.580Z",
+              "updated_at": "2026-11-07T01:04:38.647Z",
+              "captured_at": "2026-11-09T03:50:47.065020+00:00",
+              "components": [
+                "Webhooks",
+                "Actions",
+                "Pages"
+              ],
+              "updates": [
+                {
+                  "status": "resolved",
+                  "created_at": "2026-11-04T17:01:11.503Z",
+                  "body": "On November 4, 2026, between 15:49 UTC and 16:48 UTC, and again between 17:20 UTC and 17:55 UTC, GitHub Actions, Pages, Webhooks, Code Scanning, and Copilot coding agent experienced delays. During this time, Actions workflow runs and job status updates were delayed by up to 25 minutes. Pages deployments dropped to about 4% of normal volume, webhook deliveries dropped to about 58% of normal volume, and Code Scanning analyses and Copilot coding agent sessions were delayed. Delayed events were processed after mitigation. <br /><br />This incident was caused by a configuration change to an internal event-routing service that unexpectedly paused delivery of several event streams. The change depended on feature flags that were not set up as intended, which the service did not handle gracefully. We mitigated the first period by rolling back the configuration change at 16:14 UTC. The code change itself was not reverted by the rollback, so a subsequent deployment reintroduced it. We mitigated the second period at 17:40 UTC by rolling back again, then processed queued events and cleared backlogs. <br /><br />We are taking several steps to prevent a repeat. The routing service will keep its e",
+                  "truncated": true
+                },
+                {
+                  "status": "monitoring",
+                  "created_at": "2026-11-04T16:49:27.384Z",
+                  "body": "The degradation has been mitigated. We are monitoring to ensure stability.",
+                  "truncated": false
+                }
+              ],
+              "offset": 0,
+              "total_updates": 9,
+              "next_offset": 2,
+              "url": "https://stspg.io/pjgptg3cfc6n"
+            }
+          },
+          {
+            "event": "tool",
+            "step": 3,
+            "name": "get_incident_details",
+            "arguments": {
+              "provider": "github",
+              "incident_id": "smtdswd1h2w4"
+            },
+            "result": {
+              "ok": true,
+              "provider": "github",
+              "id": "smtdswd1h2w4",
+              "name": "Incident with Pull Requests, Git Operations and Issues",
+              "status": "resolved",
+              "created_at": "2026-11-04T09:49:55.685Z",
+              "updated_at": "2026-11-04T11:50:06.459Z",
+              "captured_at": "2026-11-09T03:50:47.065020+00:00",
+              "components": [
+                "Git Operations",
+                "API Requests",
+                "Issues",
+                "Pull Requests",
+                "Actions"
+              ],
+              "updates": [
+                {
+                  "status": "resolved",
+                  "created_at": "2026-11-04T11:50:06.424Z",
+                  "body": "This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause analysis will be shared as soon as it is available.",
+                  "truncated": false
+                },
+                {
+                  "status": "monitoring",
+                  "created_at": "2026-11-04T11:43:52.025Z",
+                  "body": "The degradation affecting Actions has been mitigated. We are monitoring to ensure stability.",
+                  "truncated": false
+                }
+              ],
+              "offset": 0,
+              "total_updates": 9,
+              "next_offset": 2,
+              "url": "https://stspg.io/18blsgwnbyy6"
+            }
+          },
+          {
+            "event": "tool",
+            "step": 3,
+            "name": "get_incident_details",
+            "arguments": {
+              "provider": "github",
+              "incident_id": "tc28c0wzrnpz"
+            },
+            "result": {
+              "ok": true,
+              "provider": "github",
+              "id": "tc28c0wzrnpz",
+              "name": "Increased task-related errors for Copilot Mission Control",
+              "status": "resolved",
+              "created_at": "2026-11-04T08:45:00.281Z",
+              "updated_at": "2026-11-04T10:01:44.589Z",
+              "captured_at": "2026-11-09T03:50:47.065020+00:00",
+              "components": [],
+              "updates": [
+                {
+                  "status": "resolved",
+                  "created_at": "2026-11-04T10:01:44.560Z",
+                  "body": "This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause analysis will be shared as soon as it is available.",
+                  "truncated": false
+                },
+                {
+                  "status": "monitoring",
+                  "created_at": "2026-11-04T10:01:39.506Z",
+                  "body": "The degradation has been mitigated. We are monitoring to ensure stability.",
+                  "truncated": false
+                }
+              ],
+              "offset": 0,
+              "total_updates": 6,
+              "next_offset": 2,
+              "url": "https://stspg.io/hj74883wgn0t"
+            }
+          },
+          {
+            "event": "tool",
+            "step": 3,
+            "name": "get_incident_details",
+            "arguments": {
+              "provider": "github",
+              "incident_id": "13b6lyl8d7bz"
+            },
+            "result": {
+              "ok": true,
+              "provider": "github",
+              "id": "13b6lyl8d7bz",
+              "name": "Incident with Git Operations",
+              "status": "resolved",
+              "created_at": "2026-11-03T20:57:14.438Z",
+              "updated_at": "2026-11-06T23:36:05.165Z",
+              "captured_at": "2026-11-09T03:50:47.065020+00:00",
+              "components": [
+                "Git Operations"
+              ],
+              "updates": [
+                {
+                  "status": "resolved",
+                  "created_at": "2026-11-03T22:41:03.289Z",
+                  "body": "On November 3, 2026, between 15:00 UTC and 22:37 UTC, Git operations over HTTPS on GitHub.com were degraded. Clones, fetches, and pushes over HTTPS were slow, and some failed. For about half of Git HTTPS traffic, median response time rose from under 100 milliseconds to as high as 5 seconds. On average, the error rate was 0.65% and peaked at 1.29% of requests to the service. Git operations over SSH were not affected. <br /><br />This was due to a buildup of excess connections on the hosts that serve Git HTTPS traffic, which saturated their network capacity and caused slow and failed responses for all clients served by those hosts. <br /><br />We mitigated the incident by blocking a client traffic pattern at our load balancers and reloading them, which released the excess connections. The block also prevented some users of one third-party integration from performing Git operations over HTTPS until we removed it on November 4 at 13:26 UTC. <br /><br />We are working to alert on sustained Git HTTPS latency sooner and make load balancer mitigations take effect on existing connections immediately.",
+                  "truncated": false
+                },
+                {
+                  "status": "monitoring",
+                  "created_at": "2026-11-03T22:37:36.779Z",
+                  "body": "The degradation affecting Git Operations has been mitigated. We are monitoring to ensure stability.",
+                  "truncated": false
+                }
+              ],
+              "offset": 0,
+              "total_updates": 6,
+              "next_offset": 2,
+              "url": "https://stspg.io/n478rfsspcmr"
+            }
+          },
+          {
+            "event": "tool",
+            "step": 3,
+            "name": "get_vercel_status",
+            "arguments": {},
+            "result": {
+              "provider": "vercel",
+              "captured_at": "2026-11-10T14:45:50.457875+00:00",
+              "overall": {
+                "indicator": "none",
+                "description": "All Systems Operational"
+              },
+              "components": [],
+              "incidents": [
+                {
+                  "id": "w661l7k3kf4p",
+                  "name": "Build delays and degraded Vercel Dashboard performance",
+                  "status": "resolved",
+                  "updated_at": "2026-11-05T18:50:23.139Z"
+                },
+                {
+                  "id": "4lgcbsr7l8xn",
+                  "name": "Delays in Logs and Observability data",
+                  "status": "resolved",
+                  "updated_at": "2026-10-23T17:32:46.920Z"
+                },
+                {
+                  "id": "sps6n39gm4sg",
+                  "name": "Increased build and deployment failures",
+                  "status": "resolved",
+                  "updated_at": "2026-10-12T20:11:12.802Z"
+                },
+                {
+                  "id": "bpzq72pgngc7",
+                  "name": "Delays in Drains, Observability, and Workflow in Washington (iad1)",
+                  "status": "resolved",
+                  "updated_at": "2026-10-10T01:37:00.920Z"
+                },
+                {
+                  "id": "1dp8c0nfchtg",
+                  "name": "Vercel Auth login failures for pages with Deployment Protection enabled",
+                  "status": "resolved",
+                  "updated_at": "2026-10-06T16:26:49.403Z"
+                },
+                {
+                  "id": "xr8lx0kncx0g",
+                  "name": "Elevated Sandbox error rates in Paris (cdg1)",
+                  "status": "resolved",
+                  "updated_at": "2026-10-06T09:36:55.249Z"
+                },
+                {
+                  "id": "yy1sm6x5l83q",
+                  "name": "Build failures and 500 errors for functions using Edge runtime",
+                  "status": "resolved",
+                  "updated_at": "2026-09-28T14:11:29.973Z"
+                },
+                {
+                  "id": "5c1lswm68bkg",
+                  "name": "Deployment stuck in initializing state",
+                  "status": "resolved",
+                  "updated_at": "2026-09-18T22:31:22.780Z"
+                }
+              ],
+              "match_count": 50,
+              "returned": 8,
+              "note": "Chỉ tìm trong response incidents đã lấy; danh sách trả về tối đa 8 mục.",
+              "source": "https://www.vercel-status.com"
+            }
+          },
+          {
+            "event": "observation_review",
+            "step": 3,
+            "failed_status_requests": [],
+            "referenced_incident_urls": [
+              "https://www.githubstatus.com/incidents/xr3myzj7ms51"
+            ]
+          },
+          {
+            "event": "model",
+            "step": 4,
+            "finish": "stop",
+            "tool_calls": 0
+          },
+          {
+            "event": "validation_missing_source",
+            "step": 4,
+            "missing_urls": [
+              "https://stspg.io/18blsgwnbyy6",
+              "https://stspg.io/hj74883wgn0t",
+              "https://stspg.io/n478rfsspcmr"
+            ]
+          },
+          {
+            "event": "model",
+            "step": 5,
+            "finish": "stop",
+            "tool_calls": 0
+          },
+          {
+            "event": "validation_missing_source",
+            "step": 5,
+            "missing_urls": [
+              "https://stspg.io/hj74883wgn0t"
+            ]
+          },
+          {
+            "event": "model",
+            "step": 6,
+            "finish": "stop",
+            "tool_calls": 0
+          },
+          {
+            "event": "validation_missing_source",
+            "step": 6,
+            "missing_urls": [
+              "https://stspg.io/lv4q3xm9r0rk",
+              "https://stspg.io/7pwv28hvkmz8",
+              "https://stspg.io/pjgptg3cfc6n"
+            ]
+          },
+          {
+            "event": "model",
+            "step": 7,
+            "finish": "stop",
+            "tool_calls": 0
+          },
+          {
+            "event": "validation_missing_source",
+            "step": 7,
+            "missing_urls": [
+              "https://stspg.io/18blsgwnbyy6",
+              "https://stspg.io/hj74883wgn0t",
+              "https://stspg.io/n478rfsspcmr"
+            ]
+          },
+          {
+            "event": "model",
+            "step": 8,
+            "finish": "stop",
+            "tool_calls": 0
+          },
+          {
+            "event": "validation_missing_source",
+            "step": 8,
+            "missing_urls": [
+              "https://stspg.io/lv4q3xm9r0rk",
+              "https://stspg.io/7pwv28hvkmz8",
+              "https://stspg.io/pjgptg3cfc6n"
+            ]
+          },
+          {
+            "event": "model",
+            "step": 9,
+            "finish": "stop",
+            "tool_calls": 0
+          },
+          {
+            "event": "validation_missing_source",
+            "step": 9,
+            "missing_urls": [
+              "https://stspg.io/18blsgwnbyy6",
+              "https://stspg.io/hj74883wgn0t",
+              "https://stspg.io/n478rfsspcmr"
+            ]
+          },
+          {
+            "event": "model",
+            "step": 10,
+            "finish": "stop",
+            "tool_calls": 0
+          },
+          {
+            "event": "validation_missing_source",
+            "step": 10,
+            "missing_urls": [
+              "https://stspg.io/lv4q3xm9r0rk",
+              "https://stspg.io/7pwv28hvkmz8",
+              "https://stspg.io/pjgptg3cfc6n"
+            ]
+          },
+          {
+            "event": "model",
+            "step": 11,
+            "finish": "stop",
+            "tool_calls": 0
+          },
+          {
+            "event": "validation_missing_source",
+            "step": 11,
+            "missing_urls": [
+              "https://stspg.io/18blsgwnbyy6",
+              "https://stspg.io/hj74883wgn0t",
+              "https://stspg.io/n478rfsspcmr"
+            ]
+          },
+          {
+            "event": "model",
+            "step": 12,
+            "finish": "stop",
+            "tool_calls": 0
+          },
+          {
+            "event": "validation_missing_source",
+            "step": 12,
+            "missing_urls": [
+              "https://stspg.io/lv4q3xm9r0rk",
+              "https://stspg.io/7pwv28hvkmz8",
+              "https://stspg.io/pjgptg3cfc6n"
+            ]
+          },
+          {
+            "event": "model",
+            "step": 13,
+            "finish": "stop",
+            "tool_calls": 0
+          },
+          {
+            "event": "validation_missing_source",
+            "step": 13,
+            "missing_urls": [
+              "https://stspg.io/18blsgwnbyy6",
+              "https://stspg.io/hj74883wgn0t",
+              "https://stspg.io/n478rfsspcmr"
+            ]
+          },
+          {
+            "event": "model",
+            "step": 14,
+            "finish": "stop",
+            "tool_calls": 0
+          },
+          {
+            "event": "validation_missing_source",
+            "step": 14,
+            "missing_urls": [
+              "https://stspg.io/lv4q3xm9r0rk",
+              "https://stspg.io/7pwv28hvkmz8",
+              "https://stspg.io/pjgptg3cfc6n"
+            ]
+          },
+          {
+            "event": "model",
+            "step": 15,
+            "finish": "stop",
+            "tool_calls": 0
+          },
+          {
+            "event": "validation_missing_source",
+            "step": 15,
+            "missing_urls": [
+              "https://stspg.io/18blsgwnbyy6",
+              "https://stspg.io/hj74883wgn0t",
+              "https://stspg.io/n478rfsspcmr"
+            ]
+          },
+          {
+            "event": "model",
+            "step": 16,
+            "finish": "stop",
+            "tool_calls": 0
+          },
+          {
+            "event": "validation_missing_source",
+            "step": 16,
+            "missing_urls": [
+              "https://stspg.io/lv4q3xm9r0rk",
+              "https://stspg.io/7pwv28hvkmz8",
+              "https://stspg.io/pjgptg3cfc6n"
+            ]
+          }
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 1161,
+            "completion_tokens": 84,
+            "total_tokens": 1245,
+            "cost": 0.00022455,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00022455,
+              "upstream_inference_prompt_cost": 0.00017415,
+              "upstream_inference_completions_cost": 5.04e-05
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 3565,
+            "completion_tokens": 742,
+            "total_tokens": 4307,
+            "cost": 0.00072075,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 3456,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00072075,
+              "upstream_inference_prompt_cost": 0.00027555,
+              "upstream_inference_completions_cost": 0.0004452
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 4428,
+            "completion_tokens": 253,
+            "total_tokens": 4681,
+            "cost": 0.0004992,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 4224,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0004992,
+              "upstream_inference_prompt_cost": 0.0003474,
+              "upstream_inference_completions_cost": 0.0001518
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 8164,
+            "completion_tokens": 953,
+            "total_tokens": 9117,
+            "cost": 0.00147,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 4352,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00147,
+              "upstream_inference_prompt_cost": 0.0008982,
+              "upstream_inference_completions_cost": 0.0005718
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 9199,
+            "completion_tokens": 1080,
+            "total_tokens": 10279,
+            "cost": 0.00134625,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 9088,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00134625,
+              "upstream_inference_prompt_cost": 0.00069825,
+              "upstream_inference_completions_cost": 0.000648
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 10331,
+            "completion_tokens": 951,
+            "total_tokens": 11282,
+            "cost": 0.00135225,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 10240,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00135225,
+              "upstream_inference_prompt_cost": 0.00078165,
+              "upstream_inference_completions_cost": 0.0005706
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 11370,
+            "completion_tokens": 952,
+            "total_tokens": 12322,
+            "cost": 0.0014319,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 11264,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0014319,
+              "upstream_inference_prompt_cost": 0.0008607,
+              "upstream_inference_completions_cost": 0.0005712
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 12404,
+            "completion_tokens": 946,
+            "total_tokens": 13350,
+            "cost": 0.0015066,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 12288,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0015066,
+              "upstream_inference_prompt_cost": 0.000939,
+              "upstream_inference_completions_cost": 0.0005676
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 13438,
+            "completion_tokens": 965,
+            "total_tokens": 14403,
+            "cost": 0.0015963,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 13312,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0015963,
+              "upstream_inference_prompt_cost": 0.0010173,
+              "upstream_inference_completions_cost": 0.000579
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 14485,
+            "completion_tokens": 948,
+            "total_tokens": 15433,
+            "cost": 0.00166635,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 14336,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00166635,
+              "upstream_inference_prompt_cost": 0.00109755,
+              "upstream_inference_completions_cost": 0.0005688
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 15521,
+            "completion_tokens": 951,
+            "total_tokens": 16472,
+            "cost": 0.00174675,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 15360,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00174675,
+              "upstream_inference_prompt_cost": 0.00117615,
+              "upstream_inference_completions_cost": 0.0005706
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 16554,
+            "completion_tokens": 944,
+            "total_tokens": 17498,
+            "cost": 0.0018207,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 16384,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0018207,
+              "upstream_inference_prompt_cost": 0.0012543,
+              "upstream_inference_completions_cost": 0.0005664
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 17586,
+            "completion_tokens": 949,
+            "total_tokens": 18535,
+            "cost": 0.0019017,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 17408,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0019017,
+              "upstream_inference_prompt_cost": 0.0013323,
+              "upstream_inference_completions_cost": 0.0005694
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 18617,
+            "completion_tokens": 925,
+            "total_tokens": 19542,
+            "cost": 0.00196515,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 18432,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00196515,
+              "upstream_inference_prompt_cost": 0.00141015,
+              "upstream_inference_completions_cost": 0.000555
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 19630,
+            "completion_tokens": 948,
+            "total_tokens": 20578,
+            "cost": 0.0020541,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 19456,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0020541,
+              "upstream_inference_prompt_cost": 0.0014853,
+              "upstream_inference_completions_cost": 0.0005688
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 20660,
+            "completion_tokens": 925,
+            "total_tokens": 21585,
+            "cost": 0.002118,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 20480,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.002118,
+              "upstream_inference_prompt_cost": 0.001563,
+              "upstream_inference_completions_cost": 0.000555
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        ]
+      },
+      "grade": {
+        "score": 0,
+        "status": "scored",
+        "reason": "Agent hết số bước trước khi hoàn tất.",
+        "improvement": "Kiểm tra trace và điều kiện dừng.",
+        "mechanical": {
+          "violations": [],
+          "score_cap": 100,
+          "tool_calls": 14,
+          "tool_steps": 2
+        },
+        "judge_usage": {}
+      }
+    }
+  ]
+}
