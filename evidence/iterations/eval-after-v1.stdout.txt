@@ -1,0 +1,45 @@
+Đang chạy E1Đang chạy E2
+
+Đang chạy E3
+E2: 100 (scored)
+Đang chạy E4
+E1: 50 (scored)
+Đang chạy E5
+E3: 85 (scored)
+Đang chạy E6
+E5: 75 (scored)
+Đang chạy A1
+E6: 100 (scored)
+Đang chạy A2
+E4: 100 (scored)
+Đang chạy A3
+A2: 100 (scored)
+Đang chạy A4
+A3: 85 (scored)
+Đang chạy A5
+A4: 80 (scored)
+Đang chạy A6
+A1: 80 (scored)
+Đang chạy A7
+A5: 50 (scored)
+Đang chạy A8
+A6: 75 (scored)
+Đang chạy H1
+A7: 75 (scored)
+Đang chạy H2
+A8: 80 (scored)
+Đang chạy H3
+H1: 55 (scored)
+Đang chạy H4
+H2: 100 (scored)
+Đang chạy H5
+H4: 80 (scored)
+Đang chạy H6
+H3: 75 (scored)
+Đang chạy H7
+H7: 40 (scored)
+Đang chạy H8
+H6: 60 (scored)
+H5: 75 (scored)
+H8: 75 (scored)
+Điểm: 77.05/100; đã chấm 22/22 case. File: eval_after.json

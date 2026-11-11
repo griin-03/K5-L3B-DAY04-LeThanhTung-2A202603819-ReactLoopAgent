@@ -1,0 +1,46 @@
+Đang chạy E1Đang chạy E2
+
+Đang chạy E3
+E1: 70 (scored)
+Đang chạy E4
+E3: 75 (scored)
+Đang chạy E5
+E2: 100 (scored)
+Đang chạy E6
+E5: 75 (scored)
+Đang chạy A1
+E4: 100 (scored)
+Đang chạy A2
+E6: 85 (scored)
+Đang chạy A3
+A2: 100 (scored)
+Đang chạy A4
+A3: 100 (scored)
+Đang chạy A5
+A1: 75 (scored)
+Đang chạy A6
+A4: 100 (scored)
+Đang chạy A7
+A5: 55 (scored)
+Đang chạy A8
+A6: 75 (scored)
+Đang chạy H1
+A7: 75 (scored)
+Đang chạy H2
+A8: 90 (scored)
+Đang chạy H3
+H2: 50 (scored)
+Đang chạy H4
+H3: 95 (scored)
+Đang chạy H5
+H4: 100 (scored)
+Đang chạy H6
+H1: 60 (scored)
+Đang chạy H7
+H7: None (unscored)
+Đang chạy H8
+H8: None (unscored)
+H5: 75 (scored)
+H6: 60 (scored)
+Điểm: None/100; đã chấm 20/22 case. File: eval_after.json
+Chưa có điểm tổng do có case chưa được chấm; xem reason trong file.

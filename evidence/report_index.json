@@ -1,0 +1,202 @@
+[
+  {
+    "file": "eval_before.json",
+    "version": "v0",
+    "snapshot": "evidence/before/agent.py",
+    "environment": "Mac",
+    "sha256": "0a07f1d9b15d50b92b12eee689a510b2ab149158e3a2b6c7bf89a37e2681ab83",
+    "summary": {
+      "total_cases": 22,
+      "scored_cases": 22,
+      "unscored_cases": 0,
+      "score_0_100": 80.68,
+      "partial_mean_0_100": null
+    },
+    "config": {
+      "provider": "openrouter",
+      "model": "openai/gpt-4o-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4o-mini",
+      "max_steps": 8,
+      "dataset": "core"
+    }
+  },
+  {
+    "file": "evidence/iterations/eval_after_v1.json",
+    "version": "v1",
+    "snapshot": "evidence/iterations/v1-agent.py",
+    "environment": "Mac",
+    "sha256": "b992b12b72f1ca3de7021a7fe6f684c2a89f3d0f231cc785b72d6755208b7bea",
+    "summary": {
+      "total_cases": 22,
+      "scored_cases": 22,
+      "unscored_cases": 0,
+      "score_0_100": 77.05,
+      "partial_mean_0_100": null
+    },
+    "config": {
+      "provider": "openrouter",
+      "model": "openai/gpt-4o-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4o-mini",
+      "max_steps": 8,
+      "dataset": "core"
+    }
+  },
+  {
+    "file": "evidence/iterations/eval_after_v2_unscored.json",
+    "version": "v2-before-http-diagnostics",
+    "snapshot": "evidence/iterations/v2-unscored-agent.py",
+    "environment": "Mac",
+    "sha256": "e93f89c7d029b3302263de4e74de2eee0f9a7ae07a52d84ccd6a893dca3e6d8b",
+    "summary": {
+      "total_cases": 22,
+      "scored_cases": 20,
+      "unscored_cases": 2,
+      "score_0_100": null,
+      "partial_mean_0_100": 80.75
+    },
+    "config": {
+      "provider": "openrouter",
+      "model": "openai/gpt-4o-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4o-mini",
+      "max_steps": 8,
+      "dataset": "core"
+    }
+  },
+  {
+    "file": "eval_after.json",
+    "version": "v2",
+    "snapshot": "evidence/after/agent.py",
+    "environment": "Mac",
+    "sha256": "7ebdc5832bfa98d483c6a2dd2a04824e1f672fbd5c9dbf300a8f8cf156e73bc7",
+    "summary": {
+      "total_cases": 22,
+      "scored_cases": 11,
+      "unscored_cases": 11,
+      "score_0_100": null,
+      "partial_mean_0_100": 74.73
+    },
+    "config": {
+      "provider": "openrouter",
+      "model": "openai/gpt-4o-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4o-mini",
+      "max_steps": 8,
+      "dataset": "core"
+    }
+  },
+  {
+    "file": "evidence/iterations/eval_bonus_unscored.json",
+    "version": "v2-before-http-diagnostics",
+    "snapshot": "evidence/iterations/v2-unscored-agent.py",
+    "environment": "Mac",
+    "sha256": "d4b631d0bfa4b9c6a167defab58f77674895d551926f7c7b0d871f470eef82eb",
+    "summary": {
+      "total_cases": 10,
+      "scored_cases": 7,
+      "unscored_cases": 3,
+      "score_0_100": null,
+      "partial_mean_0_100": 69.29,
+      "bonus_points_0_15": null
+    },
+    "config": {
+      "provider": "openrouter",
+      "model": "openai/gpt-4o-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4o-mini",
+      "max_steps": 16,
+      "dataset": "bonus"
+    }
+  },
+  {
+    "file": "eval_bonus.json",
+    "version": "v2",
+    "snapshot": "evidence/after/agent.py",
+    "environment": "Mac",
+    "sha256": "6aa45f0e1deb7f386f3756123f20534000d6653e4129088fd23852cefa72eb65",
+    "summary": {
+      "total_cases": 10,
+      "scored_cases": 7,
+      "unscored_cases": 3,
+      "score_0_100": null,
+      "partial_mean_0_100": 73.86,
+      "bonus_points_0_15": null
+    },
+    "config": {
+      "provider": "openrouter",
+      "model": "openai/gpt-4o-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4o-mini",
+      "max_steps": 16,
+      "dataset": "bonus"
+    }
+  },
+  {
+    "file": "evidence/iterations/check_v2_h7.json",
+    "version": "v2-targeted",
+    "snapshot": "evidence/iterations/v2-unscored-agent.py",
+    "environment": "Mac",
+    "sha256": "41d4b5f114603e10f1d07368382d4a373c073d6c8ae563512046e243ebe3c3c5",
+    "summary": {
+      "total_cases": 1,
+      "scored_cases": 1,
+      "unscored_cases": 0,
+      "score_0_100": 75.0,
+      "partial_mean_0_100": null
+    },
+    "config": {
+      "provider": "openrouter",
+      "model": "openai/gpt-4o-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4o-mini",
+      "max_steps": 8,
+      "dataset": "core"
+    }
+  },
+  {
+    "file": "evidence/iterations/check_v2_h1.json",
+    "version": "v2-targeted",
+    "snapshot": "evidence/iterations/v2-unscored-agent.py",
+    "environment": "Mac",
+    "sha256": "8681a136a75f3e80f52eee1b81107736f38cac81700ac81f0a86f78dc3858f3d",
+    "summary": {
+      "total_cases": 1,
+      "scored_cases": 1,
+      "unscored_cases": 0,
+      "score_0_100": 60.0,
+      "partial_mean_0_100": null
+    },
+    "config": {
+      "provider": "openrouter",
+      "model": "openai/gpt-4o-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4o-mini",
+      "max_steps": 8,
+      "dataset": "core"
+    }
+  },
+  {
+    "file": "evidence/preflight_e2.json",
+    "version": "v0-preflight",
+    "snapshot": "evidence/before/agent.py",
+    "environment": "VPS, before switching to Mac",
+    "sha256": "c164e194505dd1aba214338362825936cbd148d7c8b018e8f56ca13f5dc19db8",
+    "summary": {
+      "total_cases": 1,
+      "scored_cases": 1,
+      "unscored_cases": 0,
+      "score_0_100": 100.0,
+      "partial_mean_0_100": null
+    },
+    "config": {
+      "provider": "openrouter",
+      "model": "openai/gpt-4o-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4o-mini",
+      "max_steps": 8,
+      "dataset": "core"
+    }
+  }
+]

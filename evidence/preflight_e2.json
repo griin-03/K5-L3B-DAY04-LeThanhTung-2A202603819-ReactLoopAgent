@@ -1,0 +1,251 @@
+{
+  "summary": {
+    "total_cases": 1,
+    "scored_cases": 1,
+    "unscored_cases": 0,
+    "score_0_100": 100.0,
+    "partial_mean_0_100": null
+  },
+  "config": {
+    "provider": "openrouter",
+    "model": "openai/gpt-4o-mini",
+    "judge_provider": "openrouter",
+    "judge_model": "openai/gpt-4o-mini",
+    "max_steps": 8,
+    "dataset": "core"
+  },
+  "cases": [
+    {
+      "id": "E2",
+      "question": "Cloudflare cache purge có incident nào liên quan không? Một website CLB không thuộc FedRAMP có chắc bị ảnh hưởng không?",
+      "expected": "Incident wp49bp8bqo6c identified; update ban đầu nói non-FedRAMP không bị ảnh hưởng bởi incident này. Không khẳng định nguyên nhân lỗi website.",
+      "scenario": "normal",
+      "provider": "openrouter",
+      "model": "openai/gpt-4o-mini",
+      "judge_provider": "openrouter",
+      "judge_model": "openai/gpt-4o-mini",
+      "result": {
+        "status": "completed",
+        "answer": "Hiện tại, có một incident liên quan đến **Cloudflare cache purge** mà bạn đã hỏi:\n\n1. **Incident ID:** wp49bp8bqo6c\n   - **Tên:** Fedramp Customers have Delayed Purges\n   - **Trạng thái:** Đã được xác định\n   - **Thời gian cập nhật cuối:** 6 tháng 11 năm 2026\n   - **Thông tin:** Cloudflare đã xác định một lỗi trong quy trình xóa cache ảnh hưởng đến khách hàng thuộc FedRAMP. Nội dung cũ có thể được phục vụ đến khi hết hạn. Đáng chú ý, thông báo này cũng chỉ ra rằng **khách hàng không thuộc FedRAMP không bị ảnh hưởng**.\n\n   [Chi tiết incident tại đây](https://www.cloudflarestatus.com/incidents/wp49bp8bqo6c).\n\nTừ thông tin trên, nếu website CLB của bạn **không thuộc FedRAMP**, thì bạn **không bị ảnh hưởng** bởi sự cố này.",
+        "trace": [
+          {
+            "event": "model",
+            "step": 1,
+            "finish": "tool_calls",
+            "tool_calls": 1
+          },
+          {
+            "event": "tool",
+            "step": 1,
+            "name": "get_status",
+            "arguments": {
+              "provider": "cloudflare",
+              "component": "cache purge"
+            },
+            "result": {
+              "provider": "cloudflare",
+              "captured_at": "2026-11-09T03:50:47.638054+00:00",
+              "overall": {
+                "indicator": "major",
+                "description": "Partial System Outage"
+              },
+              "components": [
+                {
+                  "name": "CDN Cache Purge",
+                  "status": "degraded_performance"
+                }
+              ],
+              "incidents": [
+                {
+                  "id": "wp49bp8bqo6c",
+                  "name": "Fedramp Customers have Delayed Purges",
+                  "status": "identified",
+                  "updated_at": "2026-11-06T17:59:13.680Z"
+                },
+                {
+                  "id": "5tlm9r9j9rpo",
+                  "name": "Cache purge delays in Qingdao Shandong, China",
+                  "status": "resolved",
+                  "updated_at": "2026-10-31T06:57:35.247Z"
+                },
+                {
+                  "id": "8s6pn9rvof3l",
+                  "name": "Cache Purging Delays Affecting Requests Routed Through EEUR",
+                  "status": "resolved",
+                  "updated_at": "2026-10-27T16:14:34.056Z"
+                }
+              ],
+              "matching_incidents_in_last_50": 3,
+              "note": "Chỉ tìm theo chuỗi trong 50 incident gần nhất; không tìm thấy không chứng minh không có sự cố.",
+              "source": "https://www.cloudflarestatus.com"
+            }
+          },
+          {
+            "event": "model",
+            "step": 2,
+            "finish": "tool_calls",
+            "tool_calls": 1
+          },
+          {
+            "event": "tool",
+            "step": 2,
+            "name": "get_incident_details",
+            "arguments": {
+              "provider": "cloudflare",
+              "incident_id": "wp49bp8bqo6c"
+            },
+            "result": {
+              "ok": true,
+              "provider": "cloudflare",
+              "captured_at": "2026-11-09T03:50:47.638054+00:00",
+              "id": "wp49bp8bqo6c",
+              "name": "Fedramp Customers have Delayed Purges",
+              "status": "identified",
+              "created_at": "2026-11-06T17:47:15.545Z",
+              "updated_at": "2026-11-06T17:59:13.680Z",
+              "components": [
+                "CDN Cache Purge"
+              ],
+              "updates": [
+                {
+                  "status": "identified",
+                  "created_at": "2026-11-06T17:59:13.680Z",
+                  "body": "We are continuing to work on a fix for the issue.",
+                  "truncated": false
+                },
+                {
+                  "status": "investigating",
+                  "created_at": "2026-11-06T17:47:15.545Z",
+                  "body": "Cloudflare has identified a bug with our purge pipeline impacting fedramp customers. Stale content may be served until expired. Non-fedramp customers are not impacted. ",
+                  "truncated": false
+                }
+              ],
+              "updates_total": 2,
+              "url": "https://www.cloudflarestatus.com/incidents/wp49bp8bqo6c"
+            }
+          },
+          {
+            "event": "model",
+            "step": 3,
+            "finish": "stop",
+            "tool_calls": 0
+          }
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 255,
+            "completion_tokens": 20,
+            "total_tokens": 275,
+            "cost": 5.025e-05,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 5.025e-05,
+              "upstream_inference_prompt_cost": 3.825e-05,
+              "upstream_inference_completions_cost": 1.2e-05
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 583,
+            "completion_tokens": 29,
+            "total_tokens": 612,
+            "cost": 0.00010485,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00010485,
+              "upstream_inference_prompt_cost": 8.745e-05,
+              "upstream_inference_completions_cost": 1.74e-05
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          {
+            "prompt_tokens": 899,
+            "completion_tokens": 214,
+            "total_tokens": 1113,
+            "cost": 0.00026325,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00026325,
+              "upstream_inference_prompt_cost": 0.00013485,
+              "upstream_inference_completions_cost": 0.0001284
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        ]
+      },
+      "grade": {
+        "score": 100,
+        "raw_judge_score": 100,
+        "dimensions": {
+          "factuality": 40,
+          "completeness": 25,
+          "evidence": 20,
+          "boundaries": 15
+        },
+        "status": "scored",
+        "reason": "Câu trả lời đưa ra thông tin chính xác về sự cố, bao gồm ID và mô tả về ảnh hưởng của nó. Thông tin cũng nêu rõ khách hàng không thuộc FedRAMP không bị ảnh hưởng. Tuy nhiên, thông tin về nguyên nhân lỗi website vẫn còn thiếu sót.",
+        "improvement": "Cần bổ sung thông tin về nguyên nhân của lỗi website để hoàn thiện hơn.",
+        "mechanical": {
+          "violations": [],
+          "score_cap": 100,
+          "tool_calls": 2,
+          "tool_steps": 2
+        },
+        "judge_usage": {
+          "prompt_tokens": 1436,
+          "completion_tokens": 126,
+          "total_tokens": 1562,
+          "cost": 0.000291,
+          "is_byok": false,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "audio_tokens": 0,
+            "video_tokens": 0
+          },
+          "cost_details": {
+            "upstream_inference_cost": 0.000291,
+            "upstream_inference_prompt_cost": 0.0002154,
+            "upstream_inference_completions_cost": 7.56e-05
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "image_tokens": 0,
+            "audio_tokens": 0
+          }
+        },
+        "judge_trace_truncated": false
+      }
+    }
+  ]
+}

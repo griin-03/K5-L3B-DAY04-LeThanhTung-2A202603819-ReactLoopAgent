@@ -1,0 +1,198 @@
+{
+  "config": {
+    "provider": "openrouter",
+    "model": "openai/gpt-4o-mini",
+    "judge_provider": "openrouter",
+    "judge_model": "openai/gpt-4o-mini",
+    "max_steps": 8,
+    "dataset": "core"
+  },
+  "before": {
+    "total_cases": 22,
+    "scored_cases": 22,
+    "unscored_cases": 0,
+    "score_0_100": 80.68,
+    "partial_mean_0_100": null,
+    "agent_model_calls": 49,
+    "judge_calls_with_usage": 22,
+    "agent_total_tokens": 41041,
+    "judge_total_tokens": 41030,
+    "reported_cost_sum": 0.01818555,
+    "cost_complete": true,
+    "source_revision_events": 0
+  },
+  "after": {
+    "total_cases": 22,
+    "scored_cases": 22,
+    "unscored_cases": 0,
+    "score_0_100": 77.05,
+    "partial_mean_0_100": null,
+    "agent_model_calls": 55,
+    "judge_calls_with_usage": 22,
+    "agent_total_tokens": 67449,
+    "judge_total_tokens": 45868,
+    "reported_cost_sum": 0.0232716,
+    "cost_complete": true,
+    "source_revision_events": 1
+  },
+  "cases": [
+    {
+      "id": "E1",
+      "before": 75,
+      "after": 50,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "E2",
+      "before": 100,
+      "after": 100,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "E3",
+      "before": 75,
+      "after": 85,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "E4",
+      "before": 100,
+      "after": 100,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "E5",
+      "before": 75,
+      "after": 75,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "E6",
+      "before": 55,
+      "after": 100,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "A1",
+      "before": 95,
+      "after": 80,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "A2",
+      "before": 95,
+      "after": 100,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "A3",
+      "before": 75,
+      "after": 85,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "A4",
+      "before": 75,
+      "after": 80,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "A5",
+      "before": 100,
+      "after": 50,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "A6",
+      "before": 75,
+      "after": 75,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "A7",
+      "before": 75,
+      "after": 75,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "A8",
+      "before": 100,
+      "after": 80,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "H1",
+      "before": 60,
+      "after": 55,
+      "after_status": "completed",
+      "mechanical_violations": [
+        "Cần tool calls ở ít nhất 2 model steps khác nhau."
+      ]
+    },
+    {
+      "id": "H2",
+      "before": 100,
+      "after": 100,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "H3",
+      "before": 100,
+      "after": 75,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "H4",
+      "before": 100,
+      "after": 80,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "H5",
+      "before": 60,
+      "after": 75,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "H6",
+      "before": 60,
+      "after": 60,
+      "after_status": "completed",
+      "mechanical_violations": [
+        "Cần tool calls ở ít nhất 2 model steps khác nhau."
+      ]
+    },
+    {
+      "id": "H7",
+      "before": 60,
+      "after": 40,
+      "after_status": "completed",
+      "mechanical_violations": []
+    },
+    {
+      "id": "H8",
+      "before": 65,
+      "after": 75,
+      "after_status": "completed",
+      "mechanical_violations": []
+    }
+  ]
+}
