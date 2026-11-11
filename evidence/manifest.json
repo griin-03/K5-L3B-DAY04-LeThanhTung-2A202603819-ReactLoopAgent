@@ -1,0 +1,28 @@
+{
+  "upstream_commit": "dfdc97584a71cf6a8dd9a4bf97e7e064c89ceb3f",
+  "protected_sha256": {
+    "RUBRIC.md": "dea4f834d1406343e77f6e5a13f7b3ad95ce9c419c5d2403659c78c28c752c06",
+    "bonus/cases.json": "20aee5e8aec1a1fd6d75bd5c310d1a4d59a3865ba9fdcab236a1da8db5d9bf8f",
+    "bonus/fixtures/digitalocean.json": "6aba084edb60100c37bc02c022584202f7355916e872ec211f61d31bba69641a",
+    "bonus/fixtures/npm.json": "9d61a1776c7406001222a941d5873364c743b170f8cb31c2d8bb8fd3b5795dad",
+    "bonus/fixtures/vercel.json": "8f84793557582fa81bdf47b45d24187de813f84ff71beabb443a820322381a4f",
+    "bonus/tools.py": "1a552c6e1aba591a400706852a6df8fed6901ec4301c1ad7eda12eee452bcf80",
+    "evals/cases.json": "3070f2dff24d9518b690213c280a318ff880931ef042603d7371f4280b930e34",
+    "evals/grading.py": "290d342cf40c49926bd635a8046ffb6106321821e3d68ce4286b08878f3c26bf",
+    "evals/scenarios.py": "019de84221bc343299acf596cfddc033bd24fa064df0c30c03f36e75fe1c1ef2",
+    "fixtures/cloudflare.json": "896e753ad1ff6d67d5817781a487be597335dc5c124bbf0328098738bb202ab4",
+    "fixtures/github.json": "c4b72f0ab397fa72702908dc1d73aa893af66fff158b3b1bcabf223afb792ad7",
+    "providers.py": "5df33c96055c96a6838944223e7d3747da91c94769ffd4f8a1f94d7b13ea719d",
+    "status_tools.py": "015c860a077526580da312dd68560e4e2ace0df2f28a8743a72172e353ba8f3d"
+  },
+  "before_agent_sha256": "1578a16716931fbf01c935ff662bcd8c0cdc471e9a1d918330205be3be170465",
+  "run_config": {
+    "provider": "openrouter",
+    "model": "openai/gpt-4o-mini",
+    "judge_provider": "openrouter",
+    "judge_model": "openai/gpt-4o-mini",
+    "max_steps": 8,
+    "dataset": "core",
+    "workers": 2
+  }
+}
