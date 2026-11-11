@@ -35,6 +35,15 @@ class AgentEdgeTests(unittest.TestCase):
         self.assertEqual(observation['error'], 'TimeoutError')
         self.assertEqual(result['status'], 'completed')
 
+    def test_provider_http_status_is_recorded_without_the_response_body(self):
+        class BrokenProvider:
+            def complete(self, messages, schemas):
+                raise RuntimeError('Provider trả HTTP 429; private-request-body')
+
+        result = run_agent('Kiểm tra', BrokenProvider(), StatusTools())
+        self.assertEqual(result['trace'][0]['http_status'], 429)
+        self.assertNotIn('private-request-body', json.dumps(result))
+
     def test_array_arguments_are_rejected(self):
         model = FakeProvider([tool_call('t', 'get_status', '[]'), final('Thiếu tham số.')])
         run_agent('Kiểm tra', model, StatusTools())
@@ -86,6 +95,31 @@ class AgentEdgeTests(unittest.TestCase):
         result = run_agent('Kiểm tra', model, StatusTools())
         self.assertEqual(result['status'], 'completed')
         self.assertFalse(json.loads(model.histories[1][-1]['content'])['ok'])
+
+    def test_failed_status_review_preserves_assistant_and_tool_order(self):
+        response = tool_call('t', 'get_status', '{"provider":"github"}')
+        model = FakeProvider([response, final('Chưa xác nhận được.')])
+        result = run_agent('Kiểm tra', model, StatusTools(fail=True))
+        history = model.histories[1]
+        self.assertEqual(history[-2], response['message'])
+        self.assertEqual(history[-1]['tool_call_id'], 't')
+        self.assertTrue(any(message['role'] == 'system' and 'failed_status_requests' in message['content']
+                            for message in history))
+        event = next(row for row in result['trace'] if row['event'] == 'observation_review')
+        self.assertEqual(event['failed_status_requests'][0]['provider'], 'github')
+
+    def test_incident_reference_is_observed_data_not_a_hardcoded_id(self):
+        class Tools:
+            def execute(self, name, args):
+                return {'ok': True, 'url': 'https://status.example/incidents/first',
+                        'updates': [{'body': 'Chi tiết: https://status.example/incidents/related123'}]}
+
+        model = FakeProvider([tool_call('t', 'get_incident_details', '{"incident_id":"first"}'),
+                              final('Nguồn: https://status.example/incidents/first')])
+        result = run_agent('Đọc chi tiết', model, Tools())
+        event = next(row for row in result['trace'] if row['event'] == 'observation_review')
+        self.assertEqual(event['referenced_incident_urls'], ['https://status.example/incidents/related123'])
+        self.assertEqual(result['status'], 'completed')
 
     def test_source_check_covers_both_parallel_incidents(self):
         class Tools:

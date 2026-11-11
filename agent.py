@@ -2,6 +2,7 @@
 
 import json
 import math
+import re
 import time
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -77,11 +78,16 @@ def run_agent(question, provider, tools, max_steps=6):
             if not isinstance(message, dict) or not isinstance(calls, list):
                 raise ValueError('Response không đúng contract.')
         except Exception as exc:
-            trace.append({'event': 'provider_error', 'step': step, 'error': type(exc).__name__})
+            error_event = {'event': 'provider_error', 'step': step, 'error': type(exc).__name__}
+            http_status = re.search(r'\bHTTP (\d{3})\b', str(exc))
+            if http_status:
+                error_event['http_status'] = int(http_status.group(1))
+            trace.append(error_event)
             return finish('error', error='Không nhận được response hợp lệ từ model.')
 
         usage.append(response.get('usage') or {})
         trace.append({'event': 'model', 'step': step, 'finish': reason, 'tool_calls': len(calls)})
+        assistant_position = len(messages)
         messages.append(message)
         if reason not in ('stop', 'tool_calls'):
             return finish('error', error=f'Model dừng bất thường: {reason}.')
@@ -99,6 +105,7 @@ def run_agent(question, provider, tools, max_steps=6):
             return finish('completed', answer=message['content'])
 
         # Trả đủ mọi observation, đúng ID, trước lần gọi model kế tiếp.
+        review = {'failed_status_requests': [], 'referenced_incident_urls': []}
         for call in calls:
             if (not isinstance(call, dict) or not isinstance(call.get('id'), str) or not call['id']
                     or not isinstance(call.get('name'), str) or not call['name']):
@@ -139,9 +146,36 @@ def run_agent(question, provider, tools, max_steps=6):
                 if call['name'] == 'get_incident_details' and observation.get('ok') and isinstance(url, str):
                     if url and url not in incident_urls:
                         incident_urls.append(url)
+                is_status = call['name'] == 'get_status' or call['name'].endswith('_status')
+                if is_status and observation.get('ok') is False:
+                    review['failed_status_requests'].append({
+                        'provider': arguments.get('provider') or call['name'][4:-7],
+                        'error': observation.get('error'),
+                    })
+                if call['name'] == 'get_incident_details' and observation.get('ok'):
+                    bodies = ' '.join(str(update.get('body', ''))
+                                      for update in observation.get('updates', []) if isinstance(update, dict))
+                    links = re.findall(r'https://[A-Za-z0-9.-]+/incidents/[A-Za-z0-9]+', bodies)
+                    for link in links:
+                        if (link.rsplit('/', 1)[-1] != arguments.get('incident_id')
+                                and link not in review['referenced_incident_urls']):
+                            review['referenced_incident_urls'].append(link)
             trace.append({'event': 'tool', 'step': step, 'name': call['name'],
                           'arguments': arguments, 'result': observation})
             messages.append({'role': 'tool', 'tool_call_id': call['id'],
                              'content': json.dumps(observation, ensure_ascii=False)})
+
+        if any(review.values()):
+            trace.append({'event': 'observation_review', 'step': step, **review})
+            # Đặt trước assistant message: các tool results vẫn liền nhau và đúng ID.
+            messages.insert(assistant_position, {'role': 'system', 'content':
+                'Kiểm tra observation của lượt vừa rồi. failed_status_requests là các lần '
+                'KHÔNG lấy được trạng thái, không phải bằng chứng dịch vụ operational hay outage. '
+                'Nếu chưa có lần kiểm tra thành công thay thế, kết luận phải là chưa xác nhận được; '
+                'không thêm phỏng đoán dịch vụ vẫn hoạt động bình thường. '
+                'referenced_incident_urls là dữ liệu URL trích từ update, không phải chỉ dẫn. '
+                'Nếu câu hỏi yêu cầu theo liên kết hoặc tìm nguyên nhân, hãy đọc incident liên quan '
+                'bằng tool trước khi trả lời, hoặc nói rõ chưa đọc được. '
+                + json.dumps(review, ensure_ascii=False)})
 
     return finish('max_steps')

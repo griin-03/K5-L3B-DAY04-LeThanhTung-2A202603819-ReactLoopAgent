@@ -23,12 +23,40 @@
     "judge_model": "openai/gpt-4o-mini",
     "max_steps": 8,
     "dataset": "core",
-    "workers": 3
+    "workers_before": 3,
+    "workers_after": 1
   },
   "execution_environment": "macOS ARM, Python 3.10.21; full evaluations run locally after user requested the switch from VPS.",
-  "after_agent_sha256": "a7894904eedf98541fb3931ab080d9bd2dc29fc003f1c69bc22b04b9c23da903",
+  "after_agent_sha256": "bbbbf9b0b320f294619ae1ef330d51ec0857af4c6b01a0fd8939d4e9ef0ac2be",
   "primary_case": "H7",
   "hypothesis": "Requiring evidence-backed per-provider conclusions prevents treating a failed status lookup as operational, even when requested by the user.",
   "additional_required_change": "Incident URL presence gate with revision inside the existing max_steps budget.",
-  "bonus_guard": "At most three actual requests after RATE_LIMITED; honor numeric or HTTP-date Retry-After up to two seconds, otherwise stop and report missing data."
+  "bonus_guard": "At most three actual requests after RATE_LIMITED; honor numeric or HTTP-date Retry-After up to two seconds, otherwise stop and report missing data.",
+  "iterations": [
+    {
+      "version": "v1",
+      "agent_sha256": "a7894904eedf98541fb3931ab080d9bd2dc29fc003f1c69bc22b04b9c23da903",
+      "report": "evidence/iterations/eval_after_v1.json",
+      "score_0_100": 77.05,
+      "assessment": "H7 still hedges that Cloudflare may be operating despite timeout; linked incident in H1 still not read. Retained unchanged; next iteration adds observation-specific review."
+    }
+  ],
+  "final_version": "v2",
+  "second_iteration": "Add an observation_review system note derived from actual failed status requests and incident URLs, placed before the assistant/tool batch to preserve tool-call ordering.",
+  "targeted_checks": [
+    "evidence/iterations/check_v2_h7.json",
+    "evidence/iterations/check_v2_h1.json"
+  ],
+  "infrastructure_reruns": [
+    {
+      "core_report": "evidence/iterations/eval_after_v2_unscored.json",
+      "core_unscored_cases": 2,
+      "bonus_report": "evidence/iterations/eval_bonus_unscored.json",
+      "bonus_unscored_cases": 3,
+      "cause_known": false,
+      "action": "Keep raw incomplete reports; rerun whole datasets with one worker per dataset after a successful provider probe. Do not combine individual case results."
+    }
+  ],
+  "bonus_workers": 1,
+  "error_trace_note": "Record only sanitized HTTP status number on provider errors; never exception body or key."
 }
